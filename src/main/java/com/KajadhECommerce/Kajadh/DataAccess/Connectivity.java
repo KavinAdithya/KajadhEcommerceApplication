@@ -25,6 +25,7 @@ public final class Connectivity {
 	
 	@Autowired
 	public Connectivity(String driver, String url, String username, String password) {
+		System.out.println("Bean Loaded...");
 		this.driver = driver;
 		this.url = url;
 		this.username = username;
@@ -36,13 +37,14 @@ public final class Connectivity {
 		configuration.setProperty("hibernate.connection.Driver_class", driver);
 		configuration.setProperty("hibernate.connection.url", url);
 		configuration.setProperty("hibernate.connection.username", username);
-		configuration.setProperty("hiberante.connection.password", password);
+		configuration.setProperty("hibernate.connection.password", password);
 		configuration.setProperty("hibernate.show_sql", "true");
 		configuration.setProperty("hibernate.hbm2ddl.auto", "update");
 		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
 		configuration.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.internal.EhcacheRegionFactory");
-		configuration.setProperty("hibernate.cache.use_query_level_cache", "true");
+		configuration.setProperty("hibernate.cache.use_query_cache", "true");
 		configureEntity();
+		buildSessionFactory();
 	}
 	
 	private void configureEntity() {
@@ -53,7 +55,7 @@ public final class Connectivity {
 		configuration.addAnnotatedClass(Order.class);
 		configuration.addAnnotatedClass(Product.class);
 //		configuration.configure();
-		buildSessionFactory();
+		
 	}
 	
 	private void buildSessionFactory() {
@@ -66,4 +68,8 @@ public final class Connectivity {
 	public Configuration getConfiguration() {
 		return configuration;
 	}
+
+	public SessionFactory getSessionfactory() {
+		return sessionfactory;
+	}	
 }

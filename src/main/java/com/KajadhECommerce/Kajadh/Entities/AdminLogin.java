@@ -1,14 +1,14 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name = "admin_login")
@@ -23,13 +23,17 @@ public class AdminLogin {
 	@Column(name = "admin_password")
 	private String password;
 	
+	@OneToOne(mappedBy = "adminLogin", cascade = CascadeType.REMOVE)
+	private Administrator administrator;
+	
 	public AdminLogin() {
 		super();
 	}
 	
-	public AdminLogin(String mail, String password) {
+	public AdminLogin(String mail, String password, Administrator administrator) {
 		this.mail = mail;
 		this.password = password;
+		this.administrator = administrator;
 	}
 
 	public int getId() {
@@ -55,6 +59,12 @@ public class AdminLogin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
+	}
 }

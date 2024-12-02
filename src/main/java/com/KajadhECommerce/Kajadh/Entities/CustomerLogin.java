@@ -1,11 +1,6 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "customer_login")
@@ -19,6 +14,9 @@ public class CustomerLogin {
 	
 	@Column(name = "customer_password")
 	private String password;
+	
+	@OneToOne(mappedBy = "customerLogin", cascade = CascadeType.REMOVE)
+	private Customer customer;
 	
 	public CustomerLogin() {
 		super();

@@ -1,5 +1,7 @@
 package com.KajadhECommerce.Kajadh.SpringContext;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,5 +27,9 @@ public class KajadhConfigurationClass {
 	@Bean
 	public String password() {
 		return "KavinDharani@3";
+	}
+	
+	public static ApplicationContext getContext() {
+		return new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 	}
 } 

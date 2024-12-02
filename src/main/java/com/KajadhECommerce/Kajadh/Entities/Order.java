@@ -6,22 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orderList")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@JoinColumn(name = "customer_id")
-	@OneToMany
+	@ManyToOne
 	private Customer customer;
 	
 	@JoinColumn(name = "product_id")
-	@OneToMany
+	@ManyToOne
 	private Product product;
 	
 	@Column(name = "order_quantity")
