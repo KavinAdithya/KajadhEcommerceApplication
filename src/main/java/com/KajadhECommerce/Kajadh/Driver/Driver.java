@@ -1,22 +1,14 @@
-package com.KajadhECommerce.Kajadh;
+package com.KajadhECommerce.Kajadh.Driver;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.KajadhECommerce.Kajadh.DataAccess.Connectivity;
 import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
-@SpringBootTest
-class KajadhApplicationTests {
-
-	@Test
-	void contextLoads() {
+public class Driver {
+	public static void main(String[] args) {
 		try (var context = new AnnotationConfigApplicationContext(KajadhConfigurationClass.class)){
 			var connectivity = context.getBean(Connectivity.class);
-			
-			
 		}
 	}
-
 }
