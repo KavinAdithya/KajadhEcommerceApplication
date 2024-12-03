@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Customer {
 	private String address;
 	
 	@JoinColumn(name = "customer_login")
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerLogin customerLogin;
 	
 	public Customer() {

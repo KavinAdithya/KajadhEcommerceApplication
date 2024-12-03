@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Administrator {
 	private String name;
 	
 	@JoinColumn(name = "login_data")
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private AdminLogin adminLogin;
 
 	public Administrator() {
@@ -56,6 +57,11 @@ public class Administrator {
 
 	public void setAdminLogin(AdminLogin adminLogin) {
 		this.adminLogin = adminLogin;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", name=" + name + ", adminLogin=" + adminLogin + "]";
 	}
 	
 }

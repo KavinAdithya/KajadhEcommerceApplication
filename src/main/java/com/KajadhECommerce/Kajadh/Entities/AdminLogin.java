@@ -67,4 +67,11 @@ public class AdminLogin {
 	public void setAdministrator(Administrator administrator) {
 		this.administrator = administrator;
 	}
+
+	@Override
+	public String toString() {
+		return "AdminLogin [id=" + id + ", mail=" + mail + ", password=" + password + "]";
+	}
+	
+	
 }
