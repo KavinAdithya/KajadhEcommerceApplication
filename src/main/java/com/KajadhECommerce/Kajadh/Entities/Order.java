@@ -28,13 +28,13 @@ public class Order {
 	private int quantity;
 	
 	@Column(name = "order_cost")
-	private int cost;
+	private double cost;
 	
 	public Order() {
 		super();
 	}
 	
-	public Order(Customer customer, Product product, int quantity, int cost) {
+	public Order(Customer customer, Product product, int quantity, double cost) {
 		this.customer = customer;
 		this.product = product;
 		this.quantity = quantity;
@@ -73,11 +73,19 @@ public class Order {
 		this.quantity = quantity;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", customer=" + customer + ", product=" + product + ", quantity=" + quantity
+				+ ", cost=" + cost + "]";
+	}
+	
+	
 }

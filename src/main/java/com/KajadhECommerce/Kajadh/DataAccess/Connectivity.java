@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.KajadhECommerce.Kajadh.Entities.*;
+import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 import jakarta.annotation.PostConstruct;
 
@@ -20,9 +21,13 @@ public final class Connectivity {
 	private final String url;
 	private final String username;
 	private final String password;
-	private final Configuration configuration = new Configuration();
+	@Autowired
+	private  Configuration configuration;
+	@Autowired
 	private  SessionFactory sessionfactory;
-	
+	static {
+		System.out.println("Connectivity class loaded...");
+	}
 	@Autowired
 	public Connectivity(String driver, String url, String username, String password) {
 		System.out.println("Bean Loaded...");
@@ -43,8 +48,9 @@ public final class Connectivity {
 		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
 		configuration.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.internal.EhcacheRegionFactory");
 		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+		configuration.setProperty("hibernate.format_sql", "true");
+		configuration.setProperty("hibernate.use_sql_comments", "true");
 		configureEntity();
-		buildSessionFactory();
 	}
 	
 	private void configureEntity() {
@@ -53,18 +59,9 @@ public final class Connectivity {
 		configuration.addAnnotatedClass(Customer.class);
 		configuration.addAnnotatedClass(CustomerLogin.class);
 		configuration.addAnnotatedClass(Order.class);
-		configuration.addAnnotatedClass(Product.class);
-//		configuration.configure();
-		
+		configuration.addAnnotatedClass(Product.class);	
 	}
 	
-	private void buildSessionFactory() {
-		
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties())
-				.build();
-		this.sessionfactory = configuration.buildSessionFactory(serviceRegistry);
-	}
 	public Configuration getConfiguration() {
 		return configuration;
 	}

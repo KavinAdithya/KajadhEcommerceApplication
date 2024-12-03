@@ -1,10 +1,15 @@
 package com.KajadhECommerce.Kajadh.SpringContext;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.KajadhECommerce.Kajadh.DataAccess.Connectivity;
 
 @Configuration
 @ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess"})
@@ -28,6 +33,27 @@ public class KajadhConfigurationClass {
 	public String password() {
 		return "KavinDharani@3";
 	}
+	
+	@Bean
+	public org.hibernate.cfg.Configuration configuration() {
+		return new org.hibernate.cfg.Configuration();
+	}
+	
+	@Bean
+	public Connectivity connectivity() {
+		return new Connectivity(driver(), url(), username(), password());
+	}
+	
+	
+	
+	@Bean 
+	public SessionFactory sessionFactory() {
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.applySettings(configuration().getProperties())
+				.build();
+		return configuration().buildSessionFactory(serviceRegistry);
+	}
+	
 	
 	public static ApplicationContext getContext() {
 		return new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);

@@ -44,11 +44,12 @@ public class Product {
 		super();
 	}
 	
-	public Product(String brandName, String name, int quantity, double price) {
+	public Product(String brandName, String name, int quantity, double price, Map<String, String> specification) {
 		this.brandName = brandName;
 		this.name = name;
 		this.quantity = quantity;
 		this.price = price;
+		this.specification = specification;
 	}
 
 	public int getId() {

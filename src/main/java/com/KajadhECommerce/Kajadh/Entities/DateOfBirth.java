@@ -4,33 +4,33 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class DateOfBirth {
-    private int date;
-    private String month;
+    private byte date;
+    private byte month;
 
     private short year;
 
     public  DateOfBirth() {
        super();
     }
-    public DateOfBirth(int date, String month, short year) {
+    public DateOfBirth(byte date, byte month, short year) {
         this.date = date;
         this.month = month;
         this.year = year;
     }
 
-    public int getDate() {
+    public byte getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(byte date) {
         this.date = date;
     }
 
-    public String getMonth() {
+    public byte getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
+    public void setMonth(byte month) {
         this.month = month;
     }
 
