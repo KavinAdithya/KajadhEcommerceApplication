@@ -1,7 +1,9 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,19 +11,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "orderList")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@JoinColumn(name = "customer_id")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Customer customer;
 	
 	@JoinColumn(name = "product_id")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Product product;
 	
 	@Column(name = "order_quantity")

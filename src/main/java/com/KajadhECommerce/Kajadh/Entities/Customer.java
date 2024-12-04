@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "customer")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,7 +87,12 @@ public class Customer {
 	public void setCustomerLogin(CustomerLogin customerLogin) {
 		this.customerLogin = customerLogin;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", address=" + address
+				+ ", customerLogin=" + customerLogin + "]";
+	}	
+	
 	
 }

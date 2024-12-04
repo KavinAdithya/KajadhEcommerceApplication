@@ -34,27 +34,6 @@ public class KajadhConfigurationClass {
 		return "KavinDharani@3";
 	}
 	
-	@Bean
-	public org.hibernate.cfg.Configuration configuration() {
-		return new org.hibernate.cfg.Configuration();
-	}
-	
-	@Bean
-	public Connectivity connectivity() {
-		return new Connectivity(driver(), url(), username(), password());
-	}
-	
-	
-	
-	@Bean 
-	public SessionFactory sessionFactory() {
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-				.applySettings(configuration().getProperties())
-				.build();
-		return configuration().buildSessionFactory(serviceRegistry);
-	}
-	
-	
 	public static ApplicationContext getContext() {
 		return new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 	}

@@ -2,8 +2,13 @@ package com.KajadhECommerce.Kajadh.Entities;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "customer_login")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CustomerLogin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +20,7 @@ public class CustomerLogin {
 	@Column(name = "customer_password")
 	private String password;
 	
-	@OneToOne(mappedBy = "customerLogin", cascade = CascadeType.REMOVE)
-	private Customer customer;
-	
+
 	public CustomerLogin() {
 		super();
 	}
@@ -49,5 +52,10 @@ public class CustomerLogin {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Override
+	public String toString() {
+		return "CustomerLogin [id=" + id + ", mail=" + mail + ", password=" + password + "]";
 	}
 }

@@ -21,10 +21,9 @@ public class Driver {
 	}
 		
 	private static void persist() {
-		var adminLogin = new AdminLogin("kavinadithya3@gmail.com", "KDharani3", null);
+		var adminLogin = new AdminLogin("kavinadithya3@gmail.com", "KDharani3");
 		adminLogin.setId(4);
 		var administrator = new Administrator("kavin", adminLogin);
-		adminLogin.setAdministrator(administrator);
 		administrator.setId(5);
 		//		adminLogin.setId(1);
 //		
@@ -87,9 +86,10 @@ public class Driver {
 		var order = new Order(customer, product, 1, 122.890);
 		
 //		InsertData.<Order>persist(order);
+		var data = ReadData.<Order>get(1, Order.class);
 		
-		System.out.println(ReadData.<Order>get(1, Order.class));
-		System.out.println(ReadData.<Order>get(1, Order.class));
-		
+		System.out.println(data);
+		var data1 = ReadData.<Order>get(1, Order.class);
+		System.out.println(data1);
 	}
 }
