@@ -36,9 +36,10 @@ public final class Connectivity {
 		this.url = url;
 		this.username = username;
 		this.password = password;
+		initialize();
 	}
 	
-	@PostConstruct
+//	@PostConstruct
 	public void initialize() {
 		configuration.setProperty("hibernate.connection.Driver_class", driver);
 		configuration.setProperty("hibernate.connection.url", url);
@@ -62,6 +63,7 @@ public final class Connectivity {
 		configuration.addAnnotatedClass(CustomerLogin.class);
 		configuration.addAnnotatedClass(Order.class);
 		configuration.addAnnotatedClass(Product.class);
+		System.out.println("Configuration loaded...");
 		buildSessionFactory();
 	}
 	
@@ -69,6 +71,7 @@ public final class Connectivity {
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties())
 				.build();
+		System.out.println("Session Factory builded...");
 		this.sessionfactory =  configuration.buildSessionFactory(serviceRegistry);
 	}
 	

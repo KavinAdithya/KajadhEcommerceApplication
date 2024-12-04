@@ -4,11 +4,12 @@ import java.util.Map;
 
 import org.hibernate.SessionFactory;
 
+import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 public class UpdateData {
 	private final static SessionFactory sessionFactory = 
-			KajadhConfigurationClass
+			Contex
 				.getContext()
 				.getBean(Connectivity.class)
 				.getSessionfactory();

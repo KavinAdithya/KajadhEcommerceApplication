@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.KajadhECommerce.Kajadh.DataAccess.Connectivity;
@@ -12,12 +13,36 @@ import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.*;
+import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
+import com.KajadhECommerce.Kajadh.business.ProductOperation;
 
 public class Driver {
 	public static void main(String[] args) {
-		orderPersist();
+//		var context = KajadhConfigurationClass.getContext();
+//		var sess = context.getBean(Connectivity.class);
+//		System.out.println("No issuess");
+//		var context = new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
+
+		try {
+			Class.forName("com.KajadhECommerce.Kajadh.SpringContext.Contex");
+			var context = Contex.getContext();
+		}
+		catch (ClassNotFoundException e) {
+			System.out.println("Failed to load context...");
+		}
 		
+//		productOperation();
+		
+	}
+	
+	private static  void productOperation() {
+		var con = Contex.getContext();
+		var po = con.getBean(ProductOperation.class);
+		
+		for (Product prod : po.getProducts()) {
+			System.out.println(prod);
+		}
 	}
 		
 	private static void persist() {

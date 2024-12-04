@@ -7,13 +7,14 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 
 public class InsertData {
 	
 	private final static SessionFactory sessionFactory = 
-			KajadhConfigurationClass
+			Contex
 				.getContext()
 				.getBean(Connectivity.class)
 				.getSessionfactory();

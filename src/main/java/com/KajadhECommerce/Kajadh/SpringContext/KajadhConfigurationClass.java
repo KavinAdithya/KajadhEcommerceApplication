@@ -1,18 +1,11 @@
 package com.KajadhECommerce.Kajadh.SpringContext;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.KajadhECommerce.Kajadh.DataAccess.Connectivity;
-
 @Configuration
-@ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess"})
+@ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess", "com.KajadhECommerce.Kajadh.business"})
 public class KajadhConfigurationClass {
 	@Bean
 	public String url() {
@@ -32,9 +25,5 @@ public class KajadhConfigurationClass {
 	@Bean
 	public String password() {
 		return "KavinDharani@3";
-	}
-	
-	public static ApplicationContext getContext() {
-		return new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 	}
 } 
