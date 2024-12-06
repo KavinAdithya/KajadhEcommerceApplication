@@ -99,7 +99,20 @@ public class CheckOut {
 		product.setQuantity(product.getQuantity() - quantity);
 		
 		if (product.getQuantity() == 0) {
-			DeleteData.<Product>delete(product);
+			String query = "DELETE FROM product_specifications WHERE product_spec = :id";
+			Map<String, String> parameters = new HashMap<>();
+			parameters.put("id", String.valueOf(product.getId()));
+			
+			int rows = DeleteData.<Order>deleteViaNativeQuery(query, parameters, Order.class);
+			
+			System.out.println(rows + " rows are deleted from the product specification");
+			
+			query = "DELETE FROM product WHERE id = :id";
+		
+			rows = DeleteData.<Product>deleteViaNativeQuery(query, parameters, Product.class);
+			
+			System.out.println(rows + " rows are deleted from the product table");
+
 			products.remove(product);
 		}
 		

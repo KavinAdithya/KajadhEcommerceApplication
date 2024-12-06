@@ -128,7 +128,7 @@ public class Driver {
 		dateOfBirth.setDate((byte)7);
 		dateOfBirth.setMonth((byte)3);
 		dateOfBirth.setYear((short)2005);
-		
+			
 		var customer = new Customer("java", dateOfBirth, "1234455", customerLogin);
 		customer.setId(1);
 		
