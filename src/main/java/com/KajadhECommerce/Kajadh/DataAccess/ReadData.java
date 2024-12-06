@@ -33,6 +33,7 @@ public class ReadData {
 		Type object = session.get(type, id);
 		
 		session.getTransaction().commit();
+		session.close();
 		
 		return object;
 	}
@@ -81,6 +82,8 @@ public class ReadData {
 		List<Type> objects = execQuery.list();
 		
 		session.getTransaction().commit();
+		
+		session.close();
 		
 		return objects;
 	}

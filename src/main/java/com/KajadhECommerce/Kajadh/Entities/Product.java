@@ -3,10 +3,12 @@ package com.KajadhECommerce.Kajadh.Entities;
 import java.util.Map;
 
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +41,7 @@ public class Product {
 	@Column(name = "product_price")
 	private double price;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "product_specifications",joinColumns =  @JoinColumn(name = "product_spec"))
 	@MapKeyColumn(name = "specification_name")
 	@Column(name = "specification_value")
@@ -104,5 +106,11 @@ public class Product {
 
 	public void setSpecification(Map<String, String> specification) {
 		this.specification = specification;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", brandName=" + brandName + ", name=" + name + ", quantity=" + quantity
+				+ ", price=" + price + ", specification=" + specification + "]";
 	}
 }

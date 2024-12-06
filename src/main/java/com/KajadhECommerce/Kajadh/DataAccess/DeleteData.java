@@ -5,7 +5,6 @@ import java.util.Map;
 import org.hibernate.SessionFactory;
 
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
-import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 public class DeleteData {
 	private final static SessionFactory sessionFactory = 

@@ -1,31 +1,30 @@
-package com.KajadhECommerce.Kajadh.business;
+package com.KajadhECommerce.Kajadh.business.productModule;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
 import com.KajadhECommerce.Kajadh.DataAccess.DeleteData;
 import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.Product;
 
-import jakarta.annotation.PostConstruct;
-
-
 @Service
 public class ProductOperation {
-	private  List<Product> products;
+	private  List<Product> products = null;
 	
 	public ProductOperation() {
 		super();
+		System.out.println("Product Bean Created");
 	}
-	@PostConstruct
+
 	public void init(){
+		System.out.println("Post Constructing init");
 		String query = "SELECT * FROM product";
-		products = ReadData.<Product>getViaHQLOrJPQL(query, new HashMap<>(), Product.class);
+		products = ReadData.<Product>getViaNativeQuery(query, new HashMap<>(), Product.class);
+		products.sort((a, b) -> a.getId() - b.getId());
 	}
 	
 	private boolean isValidateString(String name) {
@@ -37,6 +36,9 @@ public class ProductOperation {
 	}
 	
 	public boolean addProduct(Product product) {
+		if (products == null)
+			init();
+		
 		if (isValidateString(product.getName()) || 
 				isValidateString(product.getBrandName()) ||
 				isValidateNumber(product.getQuantity()) ||
@@ -46,6 +48,7 @@ public class ProductOperation {
 		
 		try {
 			InsertData.<Product>persist(product);
+			products.add(product);
 		}
 		catch(Exception e) {
 			return false;
@@ -55,10 +58,16 @@ public class ProductOperation {
 	}
 	
 	public List<Product> getProducts() {
+		if (products == null)
+			init();
+		
 		return products;
 	}
 	
-	public boolean deleteProduct(String name, String brandName) {
+	public boolean deleteProduct(String brandName, String name) {
+		if (products == null)
+			init();
+		
 		if (name == null || brandName == null)
 			return false;
 		
@@ -71,7 +80,7 @@ public class ProductOperation {
 				break;
 			}
 		}
-		
+	
 		if (product == null)
 			return false;
 		
@@ -80,13 +89,17 @@ public class ProductOperation {
 			products.remove(product);
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		
 		return true;
 	}
 	
-	public boolean updateProduct(String name, String brandName, Map<String, String> parameters) {
+	public boolean updateProduct(String brandName, String name, Map<String, String> parameters) {
+		if (products == null)
+			init();
+		
 		if (name == null || brandName == null || parameters == null)
 			return false;
 		
@@ -102,12 +115,10 @@ public class ProductOperation {
 				}
 				catch(Exception e) {
 					return false;
-				}
-				
+				}		
 				return true;
 			}
-		}
-		
+		}		
 		return false;
 	}
 }

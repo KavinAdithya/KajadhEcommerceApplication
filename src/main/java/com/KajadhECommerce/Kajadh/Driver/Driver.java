@@ -15,7 +15,8 @@ import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.*;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
-import com.KajadhECommerce.Kajadh.business.ProductOperation;
+import com.KajadhECommerce.Kajadh.business.productModule.CheckOut;
+import com.KajadhECommerce.Kajadh.business.productModule.ProductOperation;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -25,20 +26,46 @@ public class Driver {
 //		var context = new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 
 		try {
-			Class.forName("com.KajadhECommerce.Kajadh.SpringContext.Contex");
-			var context = Contex.getContext();
+			ordersOperation();
 		}
-		catch (ClassNotFoundException e) {
-			System.out.println("Failed to load context...");
+		catch (Exception e) {
+	
+			e.printStackTrace();
 		}
 		
 //		productOperation();
 		
 	}
 	
+	private static void ordersOperation() {
+		var context = Contex.getContext();
+		var checkOut = context.getBean(CheckOut.class);
+		var po = context.getBean(ProductOperation.class);
+		
+		for (Product prod : po.getProducts()) {
+			System.out.println(prod);
+		}
+		
+		System.out.println(checkOut.placeOrder(1, 1));
+	}
 	private static  void productOperation() {
 		var con = Contex.getContext();
 		var po = con.getBean(ProductOperation.class);
+		
+		Map<String, String> spec = new HashMap<>();
+		spec.put("kavin", "19");
+		spec.put("pizels", "8k");
+		
+		var product = new Product("MegaBk", "1", 2, 23322.0, spec);
+		
+//		po.addProduct(product);
+		
+		for (Product prod : po.getProducts()) {
+			System.out.println(prod);
+		}
+		
+//		po.deleteProduct("MegaBk", "1");
+		po.updateProduct("MegaBk", "1", spec);
 		
 		for (Product prod : po.getProducts()) {
 			System.out.println(prod);
@@ -50,7 +77,7 @@ public class Driver {
 		adminLogin.setId(4);
 		var administrator = new Administrator("kavin", adminLogin);
 		administrator.setId(5);
-		//		adminLogin.setId(1);
+//				adminLogin.setId(1);
 //		
 //		InsertData.<Administrator>persist(administrator);
 		
@@ -61,8 +88,6 @@ public class Driver {
 //		admin.getAdminLogin().setPassword("1234555666");
 //		UpdateData.<Administrator>update(administrator);
 		DeleteData.<Administrator>delete(administrator);
-		
-		
 	}
 	
 	
@@ -77,7 +102,6 @@ public class Driver {
 		var customer = new Customer("java", dateOfBirth, "1234455", customerLogin);
 		
 		InsertData.<Customer>persist(customer);
-		
 	}
 	
 	private static void productPersist() {
