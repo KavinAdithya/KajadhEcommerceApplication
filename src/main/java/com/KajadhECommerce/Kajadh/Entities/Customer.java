@@ -37,15 +37,23 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerLogin customerLogin;
 	
+	@Column(name = "secret_pin")
+	private int secretPin;
+	
+	@Column(name = "mail")
+	private String mail;
+	
 	public Customer() {
 		super();
 	}
 	
-	public Customer(String name, DateOfBirth dateOfBirth, String address, CustomerLogin customerLogin) {
+	public Customer(String name, DateOfBirth dateOfBirth, String address, String mail, int secretPin, CustomerLogin customerLogin) {
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 		this.customerLogin = customerLogin;
+		this.secretPin = secretPin;
+		this.mail = mail;
 	}
 
 	public int getId() {
@@ -88,11 +96,17 @@ public class Customer {
 		this.customerLogin = customerLogin;
 	}
 
+	public int getSecretPin() {
+		return secretPin;
+	}
+
+	public void setSecretPin(int secretPin) {
+		this.secretPin = secretPin;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", address=" + address
-				+ ", customerLogin=" + customerLogin + "]";
-	}	
-	
-	
+				+ ", customerLogin=" + customerLogin + ", secretPin=" + secretPin + "]";
+	}
 }

@@ -46,7 +46,9 @@ public class Driver {
 			System.out.println(prod);
 		}
 		
-		System.out.println(checkOut.placeOrder(1, 1));
+//		System.out.println(checkOut.placeOrder(1, 1));
+		
+//		System.out.println(checkOut.orderList());
 	}
 	private static  void productOperation() {
 		var con = Contex.getContext();
@@ -99,7 +101,7 @@ public class Driver {
 		dateOfBirth.setMonth((byte)3);
 		dateOfBirth.setYear((short)2005);
 		
-		var customer = new Customer("java", dateOfBirth, "1234455", customerLogin);
+		var customer = new Customer("java", dateOfBirth, "1234455",null, 0,customerLogin);
 		
 		InsertData.<Customer>persist(customer);
 	}
@@ -129,7 +131,7 @@ public class Driver {
 		dateOfBirth.setMonth((byte)3);
 		dateOfBirth.setYear((short)2005);
 			
-		var customer = new Customer("java", dateOfBirth, "1234455", customerLogin);
+		var customer = new Customer("java", dateOfBirth, "1234455",null, 0, customerLogin);
 		customer.setId(1);
 		
 		var order = new Order(customer, product, 1, 122.890);
