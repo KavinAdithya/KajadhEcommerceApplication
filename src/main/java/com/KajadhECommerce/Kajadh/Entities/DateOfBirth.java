@@ -1,5 +1,7 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import java.util.Objects;
+
 import javax.persistence.Cacheable;
 import javax.persistence.Embeddable;
 
@@ -49,10 +51,27 @@ public class DateOfBirth {
     }
 
     @Override
+	public int hashCode() {
+		return Objects.hash(date, month, year);
+	}
+	
+    @Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DateOfBirth other = (DateOfBirth) obj;
+		return date == other.date && month == other.month && year == other.year;
+	}
+
+	@Override
     public String toString() {
         return "DateOfBirth{" +
                 "date=" + date +
-                ", month='" + month + '\'' +
+                ", month=" + month  +
                 ", year=" + year +
                 '}';
     }

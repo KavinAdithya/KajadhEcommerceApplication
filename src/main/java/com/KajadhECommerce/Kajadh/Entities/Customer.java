@@ -1,5 +1,7 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import java.util.Objects;
+
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -102,6 +104,33 @@ public class Customer {
 
 	public void setSecretPin(int secretPin) {
 		this.secretPin = secretPin;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, customerLogin, dateOfBirth, id, mail, name, secretPin);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		return Objects.equals(address, other.address) && Objects.equals(customerLogin, other.customerLogin)
+				&& Objects.equals(dateOfBirth, other.dateOfBirth) && id == other.id && Objects.equals(mail, other.mail)
+				&& Objects.equals(name, other.name) && secretPin == other.secretPin;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import java.util.Objects;
+
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -63,6 +65,23 @@ public class Administrator {
 
 	public void setAdminLogin(AdminLogin adminLogin) {
 		this.adminLogin = adminLogin;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(adminLogin, id, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Administrator other = (Administrator) obj;
+		return Objects.equals(adminLogin, other.adminLogin) && id == other.id && Objects.equals(name, other.name);
 	}
 
 	@Override

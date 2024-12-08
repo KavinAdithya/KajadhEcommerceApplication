@@ -22,7 +22,7 @@ public class CustomerUpdation {
 	}
 	
 	public boolean updatePassword(String password) {
-		customer.getCustomerLogin().setMail(password);
+		customer.getCustomerLogin().setPassword(password);
 		try {
 			UpdateData.<Customer>update(customer);
 		}

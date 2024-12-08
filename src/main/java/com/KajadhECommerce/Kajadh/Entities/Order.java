@@ -1,5 +1,7 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
+import java.util.Objects;
+
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -89,10 +91,27 @@ public class Order {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(cost, customer, id, product, quantity);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		return Double.doubleToLongBits(cost) == Double.doubleToLongBits(other.cost)
+				&& Objects.equals(customer, other.customer) && id == other.id && Objects.equals(product, other.product)
+				&& quantity == other.quantity;
+	}
+
+	@Override
 	public String toString() {
 		return "Order [id=" + id + ", customer=" + customer + ", product=" + product + ", quantity=" + quantity
 				+ ", cost=" + cost + "]";
-	}
-	
-	
+	}	
 }

@@ -1,10 +1,10 @@
-package com.KajadhECommerce.Kajadh;
+package com.KajadhECommerce.Kajadh.business.productModule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class ProductModuleTest {
+class ProductOperationTest {
 
 	@Test
 	void test() {

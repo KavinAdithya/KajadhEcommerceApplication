@@ -1,9 +1,9 @@
 package com.KajadhECommerce.Kajadh.Entities;
 
 import java.util.Map;
+import java.util.Objects;
 
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -106,6 +106,25 @@ public class Product {
 
 	public void setSpecification(Map<String, String> specification) {
 		this.specification = specification;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(brandName, id, name, price, quantity, specification);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		return Objects.equals(brandName, other.brandName) && id == other.id && Objects.equals(name, other.name)
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price) && quantity == other.quantity
+				&& Objects.equals(specification, other.specification);
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class CustomerObjects {
 	
 	public CustomerObjects() {
 		super();
-		customer.setId(1);
+		customer.setId(-1);
 	}
 	
 	public void setId(int id) {
@@ -39,7 +39,8 @@ public class CustomerObjects {
 	}
 	
 	private void fetchCustomerViaMail() {
-		String query = "SELECT * FROM customer WHERE mail = :mail";
+		String query = "SELECT * FROM customer c "
+				+ "INNER JOIN customer_login cl ON c.id = cl.id WHERE c.mail = :mail";
 		Map<String, String> parameters = new HashMap<>();
 		
 		parameters.put("mail", mail);
