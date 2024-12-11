@@ -51,7 +51,7 @@ public class CheckOut {
 	 *  @author KaVin
 	 * 	@param No parameters
 	 *  @return void type
-	 *  @hidden Private accessor  
+	 *  @hidden Private accessory  
 	 * 	Initialize product bean from the Spring context.
 	 */
 	private void initCheckOutProduct() {
@@ -206,6 +206,8 @@ public class CheckOut {
 	 */
 	
 	private void persistOrder(Product product, int quantity) {
+		System.out.println(customer);
+		System.out.println(product);
 		
 		// Storing the order data in the database
 		var order = new Order();

@@ -91,7 +91,9 @@ public class ProductOperation {
 		if (isValidateString(product.getName()) || 
 				isValidateString(product.getBrandName()) ||
 				isValidateNumber(product.getQuantity()) ||
-				isValidateNumber(product.getPrice())) {
+				isValidateNumber(product.getPrice()) || 
+				product.getSpecification() == null || 
+				product.getSpecification().isEmpty()) {
 			return false;
 		}
 		
@@ -176,7 +178,7 @@ public class ProductOperation {
 	 * @param brandName
 	 * @param name
 	 * @param parameters
-	 * @return boolean after successful updation of the product.
+	 * @return boolean after successfu+l updation of the product.
 	 * Method will updated the existing product data.
 	 * It will make changes on list and database.
 	 */

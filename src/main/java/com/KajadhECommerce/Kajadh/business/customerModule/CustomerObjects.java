@@ -53,10 +53,12 @@ public class CustomerObjects {
 		}
 		
 		this.customer = customers.get(0);
+		System.out.println("Fetched Customer : " + this.customer);
 	}
 	
 	private void fetch() {
 		this.customer = ReadData.<Customer>get(id, Customer.class);
+		System.out.println("Fetched Customer : " + this.customer);
 	}
 	
 	/**
