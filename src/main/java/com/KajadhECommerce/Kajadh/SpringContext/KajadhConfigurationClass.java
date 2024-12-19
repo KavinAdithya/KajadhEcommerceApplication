@@ -38,13 +38,14 @@ public class KajadhConfigurationClass {
 	
 	@Bean
 	@Lazy
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Customer customer(CustomerObjects customerObjects) {
 		return customerObjects.getCustomer();
 	}
 	
 	@Bean
 	@Lazy
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public List<Order> order(CustomerObjects customerObjects) {
 		return customerObjects.orderList();
 	}
