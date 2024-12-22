@@ -11,7 +11,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "customer_login")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class CustomerLogin {
+public class CustomerLogin{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

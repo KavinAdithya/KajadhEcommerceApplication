@@ -129,7 +129,7 @@ public class Customer {
 			return false;
 		Customer other = (Customer) obj;
 		return Objects.equals(address, other.address) && Objects.equals(customerLogin, other.customerLogin)
-				&& Objects.equals(dateOfBirth, other.dateOfBirth) && id == other.id && Objects.equals(mail, other.mail)
+				&& Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(mail, other.mail)
 				&& Objects.equals(name, other.name) && secretPin == other.secretPin;
 	}
 
