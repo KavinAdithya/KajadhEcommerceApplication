@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.business.loginValidation;
 
+import java.util.regex.Pattern;
 
 public class Authentication {
 	private String name;
@@ -15,20 +16,48 @@ public class Authentication {
 	}
 	
 	public boolean isValidData() {
-		return isValidEmail() || isValidEmail() || isValidateName();
+		return isValidEmail() || isValidPassword() || isValidateName();
 	}
 	
-	public boolean isValidEmail() {
+	private boolean isValidEmail() {
 		if (eMail == null || eMail.length() < 2)
 			return true;
-		return false;
+		return ! Pattern.matches("[a-zA-Z0-9.%+-]+@[a-zA-Z]+\\.[a-zA-Z]+", eMail);
 	}
 	
-	public boolean isValidPassword() {
-		return false;
+	private boolean isValidPassword() {
+		if (password.length() < 8)
+			return true;
+		
+		boolean caps = false;
+		boolean small = false;
+		boolean special = false;
+		boolean digit = false;
+		
+		for (int i = 0; i < password.length(); i++) {
+			char ch = password.charAt(i);
+			
+			if (Character.isUpperCase(ch)) {
+				caps = true;
+			}
+			else if (Character.isLowerCase(ch)) {
+				small = true;
+			}
+			else if (Character.isDigit(ch)) {
+				digit = true;
+			}
+			else {
+				special = true;
+			}
+			
+			if (caps && small && digit && special)
+				return false;
+		}
+		
+		return true;
 	}
 	
-	public boolean isValidateName() {		
+	private boolean isValidateName() {		
 		if (name.length() < 3)
 			return true;
 		
@@ -40,7 +69,6 @@ public class Authentication {
 				return true;
 			}
 		}
-		
 		return false;
 	}
 }
