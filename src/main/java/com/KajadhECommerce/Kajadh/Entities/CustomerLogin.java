@@ -70,7 +70,7 @@ public class CustomerLogin{
 		if (getClass() != obj.getClass())
 			return false;
 		CustomerLogin other = (CustomerLogin) obj;
-		return id == other.id && Objects.equals(mail, other.mail) && Objects.equals(password, other.password);
+		return Objects.equals(mail, other.mail) && Objects.equals(password, other.password);
 	}
 
 	@Override

@@ -81,7 +81,7 @@ public class Administrator {
 		if (getClass() != obj.getClass())
 			return false;
 		Administrator other = (Administrator) obj;
-		return Objects.equals(adminLogin, other.adminLogin) && id == other.id && Objects.equals(name, other.name);
+		return Objects.equals(adminLogin, other.adminLogin)  && Objects.equals(name, other.name);
 	}
 
 	@Override

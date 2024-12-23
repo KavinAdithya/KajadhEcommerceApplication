@@ -8,7 +8,6 @@ import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
-import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 public class ReadData {
 	private final static SessionFactory sessionFactory = 

@@ -76,7 +76,7 @@ public class AdminLogin {
 		if (getClass() != obj.getClass())
 			return false;
 		AdminLogin other = (AdminLogin) obj;
-		return id == other.id && Objects.equals(mail, other.mail) && Objects.equals(password, other.password);
+		return Objects.equals(mail, other.mail) && Objects.equals(password, other.password);
 	}
 
 	@Override

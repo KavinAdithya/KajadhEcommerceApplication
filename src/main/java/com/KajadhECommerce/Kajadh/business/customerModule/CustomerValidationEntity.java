@@ -5,17 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-
+import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
 import com.KajadhECommerce.Kajadh.Entities.DateOfBirth;
 import com.KajadhECommerce.Kajadh.business.loginValidation.Authentication;
 
-@Service
-@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class CustomerValidationEntity extends Authentication{
 	private Customer customer = null;
 	
@@ -23,14 +18,32 @@ public class CustomerValidationEntity extends Authentication{
 		super(customer.getName(), 
 				customer.getCustomerLogin().getMail(), 
 				customer.getCustomerLogin().getPassword());
+		this.customer = customer;
 	}
 	
-	private boolean isValidCustomer() {
-		return isValidSecretPin() || 
+	public boolean isValidCustomer() {
+		
+		System.out.println(isValidSecretPin());
+		System.out.println(isValidAddress() );
+		System.out.println(isValidateDate());
+		System.out.println(isExistCustomer());
+		System.out.println(isValidData());
+		
+		if (isValidSecretPin() || 
 				isValidAddress()  || 
 				isValidateDate()  ||
 				isExistCustomer() ||
-				isValidData();
+				isValidData())
+			return true;
+		
+		try {
+			InsertData.<Customer>persist(customer);
+			return false;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return true;
+		}
 	}
 	
 	private boolean isValidSecretPin() {
@@ -61,10 +74,10 @@ public class CustomerValidationEntity extends Authentication{
 		
 		List<Customer> customers = ReadData.<Customer>getViaNativeQuery(query, parameters, Customer.class);
 		
-		if (customers == null || customers.isEmpty())
-			return true;
 		
 		
-		return customers.get(0).equals(customer);
+		return customers == null || 
+				(!customers.isEmpty() && 
+				customers.get(0).equals(customer));
 	}
 } 
