@@ -10,10 +10,14 @@ import com.KajadhECommerce.Kajadh.Entities.AdminLogin;
 import com.KajadhECommerce.Kajadh.Entities.Administrator;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class AdministratorValidationEntityTest {
+class AdministratorValidationEntityTest extends Object{
 	private Administrator admin = new Administrator();
 	private AdministratorValidationEntity valid ;
 	
+	public AdministratorValidationEntityTest() {
+		super();
+		
+	}
 	@BeforeAll
 	void loadData() {
 		admin.setName("Kavin");
