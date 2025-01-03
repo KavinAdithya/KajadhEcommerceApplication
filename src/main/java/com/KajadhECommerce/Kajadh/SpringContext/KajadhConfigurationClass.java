@@ -35,18 +35,4 @@ public class KajadhConfigurationClass {
 	public String password() {
 		return "KavinDharani@3";
 	}
-	
-	@Bean
-	@Lazy
-	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Customer customer(CustomerObjects customerObjects) {
-		return customerObjects.getCustomer();
-	}
-	
-	@Bean
-	@Lazy
-	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public List<Order> order(CustomerObjects customerObjects) {
-		return customerObjects.orderList();
-	}
 } 

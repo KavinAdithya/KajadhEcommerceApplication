@@ -27,7 +27,7 @@ import com.KajadhECommerce.Kajadh.Entities.Order;
 
 @Component
 @Lazy
-@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CustomerObjects {
 	
 	// Default customer id

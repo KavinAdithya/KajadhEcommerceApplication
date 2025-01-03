@@ -1,0 +1,106 @@
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.icon-image{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.image-logo {
+    height : 100px;
+    width : 100px;
+    border-radius : 50%;
+    margin-right : 40px;
+
+}
+.main-body {
+    background-color: rgb(170, 236, 236);
+    margin: 0px;
+ 
+}
+.app-name{
+    color: rgb(80, 80, 16);
+    font-size: 50px;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+.footer-contact {
+    background-color: rgb(255, 253, 253);
+    height: 130px;
+    padding: 30px;
+    font-size: 20px;
+    color : rgb(80, 80, 16);
+    font-weight: bold;
+    margin: 0px;
+}
+
+.feature-header {
+    margin-top: 100px;
+    font-size: 60px;
+    line-height: 70px;
+    color : rgb(13, 77, 137);
+}
+
+.gratitude-level {
+    font-size: 20px;
+    color: rgba(53, 58, 96, 0.96);
+    line-height: 40px;
+    margin-bottom: 100px;
+}
+
+.feature-title {
+    font-size: 40px;
+    color: rgba(125, 25, 25, 0.96);
+}
+.footer-contact p {
+    margin-left: 30px;
+}
+.middle-content {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: rgb(114, 108, 108);
+    line-height: 40px;
+}
+
+dl {
+    font-size: 20px;
+    line-height: 40px;  
+    color: rgb(2, 85, 73); 
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 60px;
+}
+
+dt {
+    font-weight: bold;
+    color: rgb(32, 130, 50);
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.start {
+    margin-top: 100px;
+    color: red;
+    margin-bottom: 100px;
+}
+
+.redirect {
+    display: grid;
+    grid-template-columns: 240px 1fr 240px;
+    margin-bottom: 150px;
+}
+
+.admin a, .customer a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin p, .customer p {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
