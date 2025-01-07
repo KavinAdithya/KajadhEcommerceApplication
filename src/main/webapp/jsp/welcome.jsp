@@ -69,7 +69,7 @@
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
-                <a href="#">
+                <a href="login.jsp?type=Admin">
                     Already Existing !
                 </a>
             </div>
@@ -82,7 +82,7 @@
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
-                <a href="#">
+                <a href="login.jsp?type=Customer">
                     Already Existing !
                 </a>
             </div>

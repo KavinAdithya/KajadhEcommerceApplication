@@ -1,0 +1,50 @@
+
+input{
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+    height: 15px;
+    width: 270px;
+    margin-left: 66px;
+    outline: none;
+    color: rgb(0, 0, 0);
+}
+
+textarea {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 66px;
+    outline: none;
+}
+
+button {
+    margin-top: 20px;
+    margin-left: 115px;
+    margin-bottom: 30px;
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 1px solid rgb(96, 92, 92);
+    background-color: white;
+    border-radius: 15px;
+    height: 30px;
+    width: 70px;
+    color : rgb(96, 92, 92);
+}
+
+.signin-form {
+    margin-top: 100px;
+    display: flex;
+    margin-bottom:100px;
+    justify-content: center;
+}
+
+form {
+    width: 450px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 0 35px grey;
+}
+.customer {
+    margin-left: 135px;
+}

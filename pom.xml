@@ -84,6 +84,7 @@
                 	<mainClass>com.KajadhECommerce.Kajadh.kajadhApplication</mainClass>
             	</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 
