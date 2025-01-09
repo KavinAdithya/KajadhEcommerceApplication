@@ -10,7 +10,7 @@
     <link rel = "stylesheet" href="../css/welcome.css?v=1.0"/>
     <link  rel="icon" href="../images/kajadhlogo.webp"/>
 </head>
-<body style="background-color: rgb(135, 230, 235)" >
+<body style="background-color: rgb(135, 230, 235); margin:0px;" >
     <div>
         <div>
 			<jsp:include page="header.jsp"/>
@@ -26,7 +26,7 @@
                 <input type = "text" name="secretPin" placeholder="Secret Pin" required/>
                 <textarea name = "address" rows = "2" cols="37" placeholder="Enter Your Address :"></textarea>
                 <input type = "date" name = "datetime" />     
-                <button type = "submit">Submit</button>
+                <button class="submit"type = "submit">Submit</button>
             </form>
         </div>
         <div>

@@ -65,7 +65,7 @@
                 <p>
                     Admin !
                 </p>
-                <a href="#">
+                <a href="signinAdmin.jsp">
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
@@ -78,7 +78,7 @@
                 <p>
                     Customer !
                 </p>
-                <a href="#">
+                <a href="signinCustomer.jsp">
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
