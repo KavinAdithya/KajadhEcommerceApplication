@@ -18,7 +18,7 @@ import com.KajadhECommerce.Kajadh.business.customerModule.CustomerObjects;
 public class KajadhConfigurationClass {
 	@Bean
 	public String url() {
-		return "jdbc:mysql://localhost:3306/kajadhApplication";
+		return "jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC";
 	}
 	
 	@Bean

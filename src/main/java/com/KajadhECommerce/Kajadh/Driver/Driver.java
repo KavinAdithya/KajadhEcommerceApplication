@@ -25,16 +25,20 @@ public class Driver {
 //		System.out.println("No issuess");
 //		var context = new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 
-		try {
-			ordersOperation();
-		}
-		catch (Exception e) {
-	
-			e.printStackTrace();
-		}
-		
+//		try {
+//			ordersOperation();
+//		}
+//		catch (Exception e) {
+//	
+//			e.printStackTrace();
+//		}
+//		
 //		productOperation();
 		
+		
+		var context = Contex.getContext();
+		
+		System.out.println(context.getBean(Connectivity.class));
 	}
 	
 	private static void ordersOperation() {

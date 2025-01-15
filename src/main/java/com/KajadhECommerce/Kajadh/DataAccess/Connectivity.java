@@ -17,6 +17,7 @@ import jakarta.annotation.PostConstruct;
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class Connectivity {
+	
 	private final String driver;
 	private final String url;
 	private final String username;
@@ -41,7 +42,7 @@ public final class Connectivity {
 	
 //	@PostConstruct
 	public void initialize() {
-		configuration.setProperty("hibernate.connection.Driver_class", driver);
+		configuration.setProperty("hibernate.connection.driver_class", driver);
 		configuration.setProperty("hibernate.connection.url", url);
 		configuration.setProperty("hibernate.connection.username", username);
 		configuration.setProperty("hibernate.connection.password", password);
@@ -53,6 +54,7 @@ public final class Connectivity {
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.use_sql_comments", "true");
 		configuration.setProperty("hibernate.generate_statistics", "true");
+		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 		configureEntity();
 	}
 	
@@ -71,8 +73,8 @@ public final class Connectivity {
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties())
 				.build();
-		System.out.println("Session Factory builded...");
 		this.sessionfactory =  configuration.buildSessionFactory(serviceRegistry);
+		System.out.println("Session Factory builded...");
 	}
 	
 	public Configuration getConfiguration() {
