@@ -60,6 +60,7 @@ public class ReadData {
 			execQuery.setParameter(para.getKey(), para.getValue());
 		}
 		
+		
 		List<Type> objects = execQuery.list();
 		
 		session.getTransaction().commit();
@@ -78,9 +79,12 @@ public class ReadData {
 			execQuery.setParameter(para.getKey(), para.getValue());
 		}	
 		
+		
 		List<Type> objects = execQuery.list();
 		
 		session.getTransaction().commit();
+		
+		System.out.println(objects);
 		
 		session.close();
 		

@@ -1,24 +1,15 @@
 package com.KajadhECommerce.Kajadh.SpringContext;
 
-import java.util.List;
-
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
-
-import com.KajadhECommerce.Kajadh.Entities.Customer;
-import com.KajadhECommerce.Kajadh.Entities.Order;
-import com.KajadhECommerce.Kajadh.business.customerModule.CustomerObjects;
 
 @Configuration
 @ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess", "com.KajadhECommerce.Kajadh.business"})
 public class KajadhConfigurationClass {
 	@Bean
 	public String url() {
-		return "jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC";
+		return "jdbc:mysql://localhost:3306/kajadhApplication?useSSL=false&serverTimezone=UTC";
 	}
 	
 	@Bean

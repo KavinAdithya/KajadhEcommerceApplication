@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.KajadhECommerce.Kajadh.Entities.*;
 
-
-import jakarta.annotation.PostConstruct;
-
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class Connectivity {
@@ -39,8 +36,7 @@ public final class Connectivity {
 		this.password = password;
 		initialize();
 	}
-	
-//	@PostConstruct
+
 	public void initialize() {
 		configuration.setProperty("hibernate.connection.driver_class", driver);
 		configuration.setProperty("hibernate.connection.url", url);

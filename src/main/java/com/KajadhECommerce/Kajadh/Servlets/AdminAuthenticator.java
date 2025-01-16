@@ -3,9 +3,6 @@ package com.KajadhECommerce.Kajadh.Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.springframework.context.ApplicationContext;
-
-import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.model.AdminEntityChecker;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -18,10 +15,6 @@ public class AdminAuthenticator extends HttpServlet{
 	
 	private static final long serialVersionUID = 8605827134800917681L;
 	
-	@Override
-	public void init() {
-		ApplicationContext context = Contex.getContext();
-	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
