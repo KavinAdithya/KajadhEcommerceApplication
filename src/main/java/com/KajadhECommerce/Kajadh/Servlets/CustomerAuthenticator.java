@@ -40,4 +40,13 @@ public class CustomerAuthenticator extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			response.sendRedirect("/Kajadh/jsp/login.jsp?type=Customer");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

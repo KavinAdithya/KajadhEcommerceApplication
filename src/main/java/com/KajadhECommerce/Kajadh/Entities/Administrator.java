@@ -34,6 +34,7 @@ public class Administrator {
 	@OneToOne(cascade = CascadeType.ALL)
 	private AdminLogin adminLogin;
 
+	
 	public Administrator() {
 		super();
 	}

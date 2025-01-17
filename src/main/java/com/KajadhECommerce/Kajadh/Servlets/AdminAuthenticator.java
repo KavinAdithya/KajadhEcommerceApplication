@@ -45,4 +45,13 @@ public class AdminAuthenticator extends HttpServlet{
 			}
 		}
 	}
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			response.sendRedirect("/Kajadh/jsp/login.jsp?type=Admin");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
