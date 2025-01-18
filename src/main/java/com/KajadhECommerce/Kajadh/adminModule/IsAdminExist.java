@@ -14,7 +14,7 @@ import com.KajadhECommerce.Kajadh.adminModule.abstraction.AdminExist;
 public class IsAdminExist implements AdminExist {
 	
 	@Override
-	public boolean isAdministratorExist(Administrator admin) {
+	public boolean isAdminNotExist(Administrator admin) {
 		
 		String query = "SELECT * FROM admin WHERE admin_name = :name";
 		
@@ -23,6 +23,6 @@ public class IsAdminExist implements AdminExist {
 		
 		List<Administrator> admins = ReadData.<Administrator>getViaNativeQuery(query, parameters, Administrator.class);
 		
-		return admins.size() == 0;
+		return admins.isEmpty();
 	}
 }

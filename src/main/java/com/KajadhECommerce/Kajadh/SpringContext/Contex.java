@@ -6,12 +6,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 
-public class Contex implements ServletContextListener{
+public class Contex implements ServletContextListener {
 	static {
 		System.out.println("Contex Class Loaded..");
 	}
 	
-	private  static ApplicationContext applicationContext;
+	private  static ApplicationContext applicationContext = 
+			new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {

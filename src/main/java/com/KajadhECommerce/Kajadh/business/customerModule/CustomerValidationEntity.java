@@ -1,60 +1,81 @@
 package com.KajadhECommerce.Kajadh.business.customerModule;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
-import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
 import com.KajadhECommerce.Kajadh.Entities.DateOfBirth;
-import com.KajadhECommerce.Kajadh.business.loginValidation.Authentication;
+import com.KajadhECommerce.Kajadh.business.customerModule.abstraction.CustomerExist;
+import com.KajadhECommerce.Kajadh.business.loginValidation.abstraction.AuthenticateLogin;
 
-public class CustomerValidationEntity extends Authentication{
-	private Customer customer = null;
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class CustomerValidationEntity {
 	
-	public CustomerValidationEntity(Customer customer) {
-		super(customer.getName(), 
-				customer.getCustomerLogin().getMail(), 
-				customer.getCustomerLogin().getPassword());
-		this.customer = customer;
+	private Customer customer;
+	
+	@Autowired
+	private AuthenticateLogin authenticateLogin;
+	
+	@Autowired
+	private CustomerExist customerExist;
+	
+	public CustomerValidationEntity() {
+		super();
 	}
 	
 	public boolean isValidCustomer() {
-		
-		System.out.println(isValidSecretPin());
-		System.out.println(isValidAddress() );
-		System.out.println(isValidateDate());
-		System.out.println(isExistCustomer());
-		System.out.println(isValidData());
-		
-		if (isValidSecretPin() || 
-				isValidAddress()  || 
-				isValidateDate()  ||
-				isExistCustomer() ||
-				isValidData())
-			return true;
-		
-		try {
-			InsertData.<Customer>persist(customer);
+		return isNotNullCustomer() &&
+			   isValidName() &&
+			   isValidSecretPin() &&
+			   isValidDate() &&
+			   isValidAddress() &&
+			   isValidLogin() &&
+			   customerExist.isCustomerNotExist(customer) &&
+			   persistCustomer();
+	}
+	
+	private boolean isNotNullCustomer() {
+		if (customer == null) {
+			System.out.println("Customer is Null !");
 			return false;
 		}
-		catch(Exception e) {
-			e.printStackTrace();
-			return true;
+		
+		return true;
+	}
+	
+	private boolean isValidName() {		
+		String name = customer.getName();
+		
+		if (name.length() < 3)
+			return false;
+		
+		for (int i = 0; i < name.length(); i++) {
+			char ch = name.charAt(i);
+		
+			if ( ! (Character.isAlphabetic(ch) ||   
+					Character.isWhitespace(ch))) {
+				System.out.println("Invalid Customer Name !");
+				return false;
+			}
 		}
+		return true;
 	}
 	
 	private boolean isValidSecretPin() {
-		return customer.getSecretPin() < 2;
+		return customer.getSecretPin() >= 2;
 	}
 	
 	private boolean isValidAddress() {
-		return customer.getAddress() == null;
+		return customer.getAddress() != null;
 	}
 	
-	private boolean isValidateDate() {
+	private boolean isValidDate() {
 		DateOfBirth dob = customer.getDateOfBirth();
 		
 		LocalDate dobDate = LocalDate.of(dob.getYear() + 18, dob.getMonth(), dob.getDate());
@@ -63,21 +84,27 @@ public class CustomerValidationEntity extends Authentication{
 		
 		System.out.println(dobDate + " " + curDate);
 		
-		return  dobDate.isAfter(curDate) || dobDate.isEqual(curDate);
+		return  ! (dobDate.isAfter(curDate) || dobDate.isEqual(curDate));
 	}
 	
-	private boolean isExistCustomer() {
-		String query = "SELECT * FROM customer WHERE customer_name = :name";
+	private boolean isValidLogin() {
+		var customerLogin = customer.getCustomerLogin();
 		
-		Map<String, String> parameters = new HashMap<>();
-		parameters.put("name", customer.getName());
-		
-		List<Customer> customers = ReadData.<Customer>getViaNativeQuery(query, parameters, Customer.class);
-		
-		
-		
-		return customers == null || 
-				(!customers.isEmpty() && 
-				customers.get(0).equals(customer));
+		return authenticateLogin.isValidEmail(customerLogin.getMail()) 
+				&& authenticateLogin.isValidPassword(customerLogin.getPassword());
+	}
+	
+	private boolean persistCustomer() {
+		try {
+			InsertData.<Customer>persist(customer);
+			
+			System.out.println("Customer Persisted");
+			
+			return true;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 } 

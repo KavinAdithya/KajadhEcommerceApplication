@@ -11,9 +11,9 @@ public class Authentication implements AuthenticateLogin{
 	
 	@Override
 	public boolean isValidEmail(String eMail) {
-		if (eMail == null || eMail.length() < 2)
-			return false;
-		return  Pattern.matches("[a-zA-Z0-9.%+-]+@[a-zA-Z]+\\.[a-zA-Z]+", eMail);
+		return  eMail == null ||
+				eMail.length() < 2 || 
+				Pattern.matches("[a-zA-Z0-9.%+-]+@[a-zA-Z]+\\.[a-zA-Z]+", eMail);
 	}
 	
 	@Override

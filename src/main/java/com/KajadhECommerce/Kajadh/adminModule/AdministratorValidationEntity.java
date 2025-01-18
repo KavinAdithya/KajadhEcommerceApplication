@@ -9,13 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.Entities.Administrator;
 import com.KajadhECommerce.Kajadh.adminModule.abstraction.AdminExist;
-import com.KajadhECommerce.Kajadh.business.loginValidation.Authentication;
 import com.KajadhECommerce.Kajadh.business.loginValidation.abstraction.AuthenticateLogin;
 
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class AdministratorValidationEntity extends Authentication{
-	
+public class AdministratorValidationEntity{
 	private Administrator admin;
 	
 	@Autowired
@@ -40,7 +38,7 @@ public class AdministratorValidationEntity extends Authentication{
 	
 	public boolean isValidAdmin() {
 		return isNotNullAdmin() && isValidateName() && 
-				adminExist.isAdministratorExist(admin) && 
+				adminExist.isAdminNotExist(admin) && 
 				isValidateLogin() && persistAdmin();
 	}	
 	
