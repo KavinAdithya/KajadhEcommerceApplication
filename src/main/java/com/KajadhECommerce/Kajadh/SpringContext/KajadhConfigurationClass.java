@@ -5,11 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess", "com.KajadhECommerce.Kajadh.business"})
+@ComponentScan({"com.KajadhECommerce.Kajadh.DataAccess", "com.KajadhECommerce.Kajadh.business", "com.KajadhECommerce.Kajadh.adminModule"})
 public class KajadhConfigurationClass {
 	@Bean
 	public String url() {
-		return "jdbc:mysql://localhost:3306/kajadhApplication?useSSL=false&serverTimezone=UTC";
+		return "jdbc:mysql://localhost:3306/kajadhApplication?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 	}
 	
 	@Bean

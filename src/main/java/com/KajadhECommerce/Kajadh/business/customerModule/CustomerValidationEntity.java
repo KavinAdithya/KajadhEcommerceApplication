@@ -31,12 +31,12 @@ public class CustomerValidationEntity {
 	
 	public boolean isValidCustomer() {
 		return isNotNullCustomer() &&
-			   isValidName() &&
+			   isValidName()&&
 			   isValidSecretPin() &&
 			   isValidDate() &&
 			   isValidAddress() &&
 			   isValidLogin() &&
-			   customerExist.isCustomerNotExist(customer) &&
+			   customerExist.isCustomerNotExist(customer) && 
 			   persistCustomer();
 	}
 	
@@ -106,5 +106,9 @@ public class CustomerValidationEntity {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 } 

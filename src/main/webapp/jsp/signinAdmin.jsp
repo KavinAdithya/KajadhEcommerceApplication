@@ -16,7 +16,7 @@
 			<jsp:include page="header.jsp"/>
 		</div>
         <div class = "signin-form">
-            <form action="SignIn/Admin">
+            <form action="/Kajadh/SignIn/Admin" method="post">
                 <h1 class="customer" style="margin-left: 160px;">
                     Admin 
                 </h1>

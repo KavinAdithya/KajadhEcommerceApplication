@@ -11,12 +11,13 @@ public class Contex implements ServletContextListener {
 		System.out.println("Contex Class Loaded..");
 	}
 	
-	private  static ApplicationContext applicationContext = 
-			new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
+	private  static ApplicationContext applicationContext;
+//						= new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		applicationContext = new AnnotationConfigApplicationContext(KajadhConfigurationClass.class);
+		beansManagedApplicationContext();
 	}
 	
 	
@@ -29,5 +30,13 @@ public class Contex implements ServletContextListener {
 	
 	public static ApplicationContext getContext() {
 		return applicationContext;
+	}
+	
+	public static void beansManagedApplicationContext() {
+		System.out.println("Beans Managed By Spring Application Context");
+		
+		for (String name : applicationContext.getBeanDefinitionNames()) {
+			System.out.println(name + " Bean Managed");
+		}
 	}
 }

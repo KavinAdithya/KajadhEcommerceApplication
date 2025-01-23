@@ -27,10 +27,6 @@ public class AdministratorValidationEntity{
 		super();
 	}
 	
-	public Administrator getAdmin() {
-		return admin;
-	}
-
 	public void setAdmin(Administrator admin) {
 		this.admin = admin;
 	}

@@ -1,7 +1,12 @@
 package com.KajadhECommerce.Kajadh.Servlets;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import com.KajadhECommerce.Kajadh.Entities.AdminLogin;
 import com.KajadhECommerce.Kajadh.Entities.Administrator;
+import com.KajadhECommerce.Kajadh.SpringContext.Contex;
+import com.KajadhECommerce.Kajadh.adminModule.AdministratorValidationEntity;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,5 +23,32 @@ public class AdminRegister extends HttpServlet{
 		
 		var admin = new Administrator(name, new AdminLogin(email, password));
 		
+		PrintWriter out = null;
+		
+		try {
+			out = response.getWriter();
+		
+			if (isValidAdmin(admin)) {
+				redirectToLogin(response);
+			}
+			else {
+				out.println("Invalid Admin Data");
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private boolean isValidAdmin(Administrator admin) {
+		var validAdmin = Contex.getContext().getBean(AdministratorValidationEntity.class);
+		
+		validAdmin.setAdmin(admin);	
+		
+		return validAdmin.isValidAdmin();
+	}
+	
+	private void redirectToLogin(HttpServletResponse response) throws IOException {
+		response.sendRedirect("/Kajadh/jsp/login.jsp?type=Admin");
 	}
 }
