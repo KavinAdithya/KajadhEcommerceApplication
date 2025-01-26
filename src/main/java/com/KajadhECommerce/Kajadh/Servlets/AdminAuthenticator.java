@@ -30,12 +30,10 @@ public class AdminAuthenticator extends HttpServlet{
 			
 			if (new AdminEntityChecker(mail, password)
 					.isAccountValid())
-				out.print("Successfully Login Admin " + mail);
+				out.print("Successfully Login Admin : " + mail);
 			else 
 				out.print("Failed to log in"); 	
-			
-			
-			out.println("Log In Sucessfull");
+
 		}
 		catch (Exception e) {
 			try {

@@ -49,7 +49,7 @@ public final class Connectivity {
 		configuration.setProperty("hibernate.cache.use_query_cache", "true");
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.use_sql_comments", "true");
-		configuration.setProperty("hibernate.generate_statistics", "true");
+//		configuration.setProperty("hibernate.generate_statistics", "true");
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 		configureEntity();
 	}

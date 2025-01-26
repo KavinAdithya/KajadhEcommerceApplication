@@ -105,7 +105,7 @@ public class Driver {
 		dateOfBirth.setMonth((byte)3);
 		dateOfBirth.setYear((short)2005);
 		
-		var customer = new Customer("java", dateOfBirth, "1234455",null, 0,customerLogin);
+		var customer = new Customer("java", dateOfBirth, "1234455",0,customerLogin);
 		
 		InsertData.<Customer>persist(customer);
 	}
@@ -135,7 +135,7 @@ public class Driver {
 		dateOfBirth.setMonth((byte)3);
 		dateOfBirth.setYear((short)2005);
 			
-		var customer = new Customer("java", dateOfBirth, "1234455",null, 0, customerLogin);
+		var customer = new Customer("java", dateOfBirth, "1234455",0, customerLogin);
 		customer.setId(1);
 		
 		var order = new Order(customer, product, 1, 122.890);

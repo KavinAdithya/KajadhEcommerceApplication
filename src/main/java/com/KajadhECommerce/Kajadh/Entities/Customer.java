@@ -42,20 +42,16 @@ public class Customer {
 	@Column(name = "secret_pin")
 	private int secretPin;
 	
-	@Column(name = "mail")
-	private String mail;
-	
 	public Customer() {
 		super();
 	}
 	
-	public Customer(String name, DateOfBirth dateOfBirth, String address, String mail, int secretPin, CustomerLogin customerLogin) {
+	public Customer(String name, DateOfBirth dateOfBirth, String address, int secretPin, CustomerLogin customerLogin) {
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 		this.customerLogin = customerLogin;
 		this.secretPin = secretPin;
-		this.mail = mail;
 	}
 
 	public int getId() {
@@ -106,17 +102,9 @@ public class Customer {
 		this.secretPin = secretPin;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, customerLogin, dateOfBirth, id, mail, name, secretPin);
+		return Objects.hash(address, customerLogin, dateOfBirth, id, name, secretPin);
 	}
 
 	@Override
@@ -129,7 +117,7 @@ public class Customer {
 			return false;
 		Customer other = (Customer) obj;
 		return Objects.equals(address, other.address) && Objects.equals(customerLogin, other.customerLogin)
-				&& Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(mail, other.mail)
+				&& Objects.equals(dateOfBirth, other.dateOfBirth)
 				&& Objects.equals(name, other.name) && secretPin == other.secretPin;
 	}
 

@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.DataAccess;
 
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,8 @@ import org.hibernate.query.Query;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 
 public class ReadData {
+	private static final PrintStream console = System.out;
+	
 	private final static SessionFactory sessionFactory = 
 			Contex
 				.getContext()
@@ -21,7 +24,7 @@ public class ReadData {
 	}
 	
 	static {
-		System.out.println("Read Class Loaded into memory...");
+		console.println("Read Class Loaded into memory...");
 	}
 	
 	public static <Type>Type get(int id, Class<Type> type) {
@@ -34,6 +37,7 @@ public class ReadData {
 		session.getTransaction().commit();
 		session.close();
 		
+		console.println("For given id : "  + id + " match are" + object);
 		return object;
 	}
 	
@@ -46,6 +50,7 @@ public class ReadData {
 		
 		session.getTransaction().commit();
 		
+		console.println("For give id : " + id + " match are loaded in lazy is " + object);
 		return object;
 	}
 	
@@ -64,6 +69,8 @@ public class ReadData {
 		List<Type> objects = execQuery.list();
 		
 		session.getTransaction().commit();
+		
+		console.println("Matches found in getViaHQLOrJPQL is " + objects);
 		
 		return objects;
 	}
@@ -84,7 +91,7 @@ public class ReadData {
 		
 		session.getTransaction().commit();
 		
-		System.out.println(objects);
+		console.println("Matches found using getViaNativeQuery is : " + objects);
 		
 		session.close();
 		
@@ -108,6 +115,9 @@ public class ReadData {
 		List<Type> objects = execQuery.list();
 		
 		session.getTransaction().commit();
+		
+		console.println("Pagination result for start : " + start + " maximum : " + maximum + " is " + objects);
+		
 		
 		return objects;
 	}

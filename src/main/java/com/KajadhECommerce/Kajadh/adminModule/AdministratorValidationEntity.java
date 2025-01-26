@@ -1,6 +1,8 @@
 package com.KajadhECommerce.Kajadh.adminModule;
 
 
+import java.io.PrintStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,8 @@ import com.KajadhECommerce.Kajadh.business.loginValidation.abstraction.Authentic
 public class AdministratorValidationEntity{
 	private Administrator admin;
 	
+	private static final PrintStream console = System.out;
+	
 	@Autowired
 	private AuthenticateLogin authenticateLogin;
 	
@@ -29,6 +33,7 @@ public class AdministratorValidationEntity{
 	
 	public void setAdmin(Administrator admin) {
 		this.admin = admin;
+		console.println("Admin Has been seted in AdministratorValidationEntity Class for valid data");
 	}
 	
 	
@@ -40,7 +45,7 @@ public class AdministratorValidationEntity{
 	
 	private boolean isNotNullAdmin() {
 		if (admin == null) {
-			System.out.println("No Administrator Object present");
+			console.println("No Administrator Object present");
 			return false;
 		}
 		
@@ -50,6 +55,8 @@ public class AdministratorValidationEntity{
 	private boolean isValidateLogin() {
 		var adminLogin = admin.getAdminLogin();
 		
+		console.println(authenticateLogin.isValidEmail(adminLogin.getMail()) + " " + admin.getAdminLogin().getMail());
+		
 		return authenticateLogin.isValidEmail(adminLogin.getMail()) &&
 				authenticateLogin.isValidPassword(adminLogin.getPassword());
 	}
@@ -57,27 +64,33 @@ public class AdministratorValidationEntity{
 	private boolean isValidateName() {		
 		String name = admin.getName();
 		
-		if (name.length() < 3)
+		if (name.length() < 3) {
+			console.println("Admin name length is less than 3 and denied");
 			return false;
+		}
 		
 		for (int i = 0; i < name.length(); i++) {
 			char ch = name.charAt(i);
 		
 			if ( ! (Character.isAlphabetic(ch) ||   
 					Character.isWhitespace(ch))) {
+				console.println("Unauthorized character in admin name");
 				return false;
 			}
 		}
+		
+		console.println("Valid Admin name..");
 		return true;
 	}
 	
 	private boolean persistAdmin() {
 		try {
 			InsertData.<Administrator>persist(admin);
+			console.println("Admin Successfully persisted in Data base");
 			return true;
 		}
 		catch(Exception e)  {
-			System.out.println("Failed to persist Admin ! \n" + e.getMessage());
+			console.println("Failed to persist Admin ! \n" + e.getMessage());
 			return false;
 		}
 	}

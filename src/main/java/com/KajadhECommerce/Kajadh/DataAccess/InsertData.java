@@ -1,5 +1,6 @@
 package com.KajadhECommerce.Kajadh.DataAccess;
 
+import java.io.PrintStream;
 import java.util.Map;
 
 import javax.persistence.Query;
@@ -12,6 +13,8 @@ import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 
 
 public class InsertData {
+	
+	private static final PrintStream console = System.out;
 	
 	private final static SessionFactory sessionFactory = 
 			Contex
@@ -31,6 +34,8 @@ public class InsertData {
 		session.persist(object);
 		
 		session.getTransaction().commit();
+		
+		console.println(object + " Object Has been persisted ...");
 	}
 	
 	public static void persistViaJPQL(String query, Map<String, String> parameters) {
@@ -48,5 +53,6 @@ public class InsertData {
 		
 		session.getTransaction().commit();
 		
+		console.println(" Object Has been Updated using persistViaJPQL ...");
 	}
 }

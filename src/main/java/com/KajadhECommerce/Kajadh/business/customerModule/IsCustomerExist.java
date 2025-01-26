@@ -8,18 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
+import com.KajadhECommerce.Kajadh.Entities.CustomerLogin;
 import com.KajadhECommerce.Kajadh.business.customerModule.abstraction.CustomerExist;
 
 @Repository
 public class IsCustomerExist implements CustomerExist{
 	
 	public boolean isCustomerNotExist(Customer customer) {
-		String query = "SELECT * FROM customer WHERE mail = :mail";
+		String query = "SELECT * FROM customer_login WHERE customer_mail = :mail";
 		
 		Map<String, String> parameters = new HashMap<>();
-		parameters.put("mail", customer.getMail());
+		parameters.put("mail", customer.getCustomerLogin().getMail());
 		
-		List<Customer> customers = ReadData.<Customer>getViaNativeQuery(query, parameters, Customer.class);
+		List<CustomerLogin> customers = ReadData.<CustomerLogin>getViaNativeQuery(query, parameters, CustomerLogin.class);
 			
 		return customers.isEmpty();
 	}

@@ -13,7 +13,7 @@ public class Authentication implements AuthenticateLogin{
 	public boolean isValidEmail(String eMail) {
 		return  eMail == null ||
 				eMail.length() < 2 || 
-				Pattern.matches("[a-zA-Z0-9.%+-]+@[a-zA-Z]+\\.[a-zA-Z]+", eMail);
+				Pattern.matches("^[a-zA-Z0-9.%+-]+@gmail\\.com$", eMail);
 	}
 	
 	@Override
