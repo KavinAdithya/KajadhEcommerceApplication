@@ -21,7 +21,6 @@ class CustomerValidationEntityTest {
 		customer.setDateOfBirth(new DateOfBirth((byte)7, (byte)3, (short)2005));
 		customer.setName("javagaa");
 		customer.setSecretPin(3);
-		customer.setMail("kavinadithya3@gmail.com");
 		customer.setAddress("1234455");
 		var customerLogin = new CustomerLogin("kavinadithya3@gmail.com", "pAsss@3445");
 		

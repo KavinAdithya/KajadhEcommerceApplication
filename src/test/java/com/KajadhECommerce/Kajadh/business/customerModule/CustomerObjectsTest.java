@@ -33,7 +33,6 @@ class CustomerObjectsTest {
 		customer.setDateOfBirth(new DateOfBirth((byte)7, (byte)3, (short)2005));
 		customer.setName("java");
 		customer.setSecretPin(0);
-		customer.setMail("kavinadithya3@gmail.com");
 		customer.setAddress("1234455");
 		var customerLogin = new CustomerLogin("kavinadithya3@gmail.com", "passs");
 		customerLogin.setId(1);
