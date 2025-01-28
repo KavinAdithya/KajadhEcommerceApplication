@@ -1,6 +1,5 @@
 package com.KajadhECommerce.Kajadh.business.customerModule;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +10,19 @@ import com.KajadhECommerce.Kajadh.Entities.Customer;
 @Lazy
 public class CustomerUpdation {
 	private Customer customer;
-	
-	@Autowired
-	public CustomerUpdation(Customer customer) {
-		this.customer = customer;
+
+	public CustomerUpdation() {
+		super();
 	}
 	
-	public boolean isValidSecretPin(int pin) {
+	private boolean isValidSecretPin(int pin) {
 		return pin == customer.getSecretPin();
 	}
 	
-	public boolean updatePassword(String password) {
+	public boolean updatePassword(String email, int secretPin, String password) {
+		if (! isValidSecretPin(secretPin))
+			return false;
+		
 		customer.getCustomerLogin().setPassword(password);
 		try {
 			UpdateData.<Customer>update(customer);
@@ -32,7 +33,10 @@ public class CustomerUpdation {
 		return true;
 	}
 	
-	public boolean updateAddress(String address) {
+	public boolean updateAddress(String email, String password, int secretPin, String address) {
+		if (! isValidSecretPin(secretPin))
+			return false;
+		
 		customer.setAddress(address);
 		try {
 			UpdateData.<Customer>update(customer);
