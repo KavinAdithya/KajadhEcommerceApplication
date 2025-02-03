@@ -28,7 +28,7 @@ class CustomerObjectsTest {
 	
 	@BeforeAll
 	void testSetId() {
-		var customerObjects = context.getBean(CustomerObjects.class);
+		var customerObjects = context.getBean(ManageCustomer.class);
 		customer.setId(1);
 		customer.setDateOfBirth(new DateOfBirth((byte)7, (byte)3, (short)2005));
 		customer.setName("java");
@@ -38,8 +38,8 @@ class CustomerObjectsTest {
 		customerLogin.setId(1);
 		customer.setCustomerLogin(customerLogin);
 
-		customerObjects.setId(2);
-		customerObjects.setMail("kavinadithya3@gmail.com");
+//		customerObjects.setId(2);
+//		customerObjects.setMail("kavinadithya3@gmail.com");
 	}
 
 	@BeforeAll

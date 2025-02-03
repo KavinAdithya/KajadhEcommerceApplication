@@ -7,11 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
 import com.KajadhECommerce.Kajadh.Entities.Order;
+import com.KajadhECommerce.Kajadh.Exception.CustomerNotFoundException;
 
 /**
  * @author KaVin
@@ -25,72 +26,31 @@ import com.KajadhECommerce.Kajadh.Entities.Order;
  * Design Pattern of object is SINGLETON.
  */
 
-@Component
+@Service
 @Lazy
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CustomerObjects {
-	
-	// Default customer id
-	private int id = -1;
-	
-	// Default Customer Object
-	private Customer customer = new Customer();
-	
-	// Order History references
-	private List<Order> orders;
-	
-	// Mail of the Customer
-	private String mail;
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+public class ManageCustomer {
 	
 	// Default Constructor
-	public CustomerObjects() {
+	public ManageCustomer() {
 		super();
-		// Setting Customer default id as -1
-		customer.setId(-1);
-	}
-	
-	/**
-	 * @author KaVin
-	 * @param id
-	 * On setting new Customer id it will Fetch the customer data from data base.
-	 * Initialize customer object with appropriate data.
-	 */
-	public void setId(int id) {
-		this.id = id;
-	
-		// Fetching Customer.
-		fetch();
 	}
 	
 	// Returning customer object.
-	public Customer getCustomer() {
-		return customer;
+	public Customer getCustomer(int id , String mail) throws CustomerNotFoundException {
+		return mail == null && id == -1 ? null : mail != null ? fetchCustomerViaMail(mail) : fetch(id);
 	}
-	
-	/**
-	 * @author KaVin
-	 * @param mail
-	 * 
-	 * Method Will fetch customer data based on mail.
-	 * On every time when we invoke this method based on email it will try to fetch the customer object.
-	 */
-	public void setMail(String mail) {
-		// Assigning mail
-		this.mail = mail;
 		
-		// Fetching customer data via email.
-		fetchCustomerViaMail();
-	}
-	
 	/**
 	 * @author KaVin
 	 * Method uses mail to fetch customer data.
 	 * Assign the object reference to hold its reference here. 
+	 * @throws CustomerNotFoundException 
 	 */
-	private void fetchCustomerViaMail() {
+	private Customer fetchCustomerViaMail(String mail) throws CustomerNotFoundException {
 		// Native QUery to fetch the customer based on mail.
-		String query = "SELECT * FROM customer c "
-				+ "INNER JOIN customer_login cl ON c.id = cl.id WHERE c.mail = :mail";
+		String query = "SELECT c.* FROM customer c "
+				+ "INNER JOIN customer_login cl ON c.id = cl.id WHERE cl.customer_mail = :mail";
 	
 		// Parameters Object for native query
 		Map<String, String> parameters = new HashMap<>();
@@ -103,27 +63,30 @@ public class CustomerObjects {
 		
 		// Ensuring the customer fetched mail are valid.
 		if (customers == null || customers.isEmpty()) {
-			System.out.println("Invalid Mail! ");
-			return;
+			throw new CustomerNotFoundException("Customer Not Found...");
 		}
 		
 		// Assigning the customer
-		this.customer = customers.get(0);
+		Customer customer = customers.get(0);
 		
 		// Indicating Console message of object fetched
-		System.out.println("Fetched Customer : " + this.customer);
+		System.out.println("Fetched Customer : " + customer);
+		
+		return customer;
 	}
 	/**
 	 * @author KaVin
 	 * Fetching customer Object using customer id.
 	 * It was the most optimized approach to fetch  customer data from the database.
 	 */
-	private void fetch() {
+	private Customer fetch(int id) {
 		// Executing Query to Fetch customer object and assigning it.
-		this.customer = ReadData.<Customer>get(id, Customer.class);
+		Customer customer = ReadData.<Customer>get(id, Customer.class);
 		
 		// Indicating Console message of object fetched
-		System.out.println("Fetched Customer : " + this.customer);
+		System.out.println("Fetched Customer : " + customer);
+		
+		return customer;
 	}
 	
 	/**
@@ -132,14 +95,9 @@ public class CustomerObjects {
 	 * @return List<Order> list of order history
 	 *  Method responsible to fetch order history from DataBase.
 	 */
-	public List<Order> orderList() {
-		// Ensuring the orders is already initialized.
-		if (orders == null) {
-			fetchOrders();
-		}
-		
+	public List<Order> orderList(int id) {
 		// Returning the order
-		return orders;
+		return fetchOrders(id);
 	}
 	
 	/**
@@ -148,15 +106,17 @@ public class CustomerObjects {
 	 * @return void
 	 * Method will fetch order history from database using Native Query.
 	 */
-	private void fetchOrders() {
+	private List<Order> fetchOrders(int id) {
 		// Native Query to fetch order history
 		String query =  "SELECT * FROM orderList Where customer_id = :id";
 		
 		// Parameters for query
 		Map<String, String> parameters = new HashMap<>();
-		parameters.put("id", String.valueOf(customer.getId()));
+		parameters.put("id", String.valueOf(id));
 		
 		// Fetching and assigning order history list object.
-		this.orders = ReadData.<Order>getViaNativeQuery(query, parameters, Order.class);
+		List<Order> orders = ReadData.<Order>getViaNativeQuery(query, parameters, Order.class);
+		
+		return orders;
 	}
 }

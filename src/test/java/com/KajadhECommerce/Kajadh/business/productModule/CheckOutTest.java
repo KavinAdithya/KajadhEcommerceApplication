@@ -10,18 +10,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.springframework.context.ApplicationContext;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
-import com.KajadhECommerce.Kajadh.business.customerModule.CustomerObjects;
+import com.KajadhECommerce.Kajadh.business.customerModule.ManageCustomer;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class CheckOutTest {
 	private ApplicationContext context = Contex.getContext();	
-	private CustomerObjects cus = context.getBean(CustomerObjects.class);
+	private ManageCustomer cus = context.getBean(ManageCustomer.class);
 	
 	
 	@BeforeAll
 	void load() {
-		cus.setId(1);
+//		cus.setId(1);
 	}
 	
 	@Test

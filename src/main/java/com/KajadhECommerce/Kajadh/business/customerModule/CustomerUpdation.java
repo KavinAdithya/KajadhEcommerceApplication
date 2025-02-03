@@ -1,14 +1,23 @@
 package com.KajadhECommerce.Kajadh.business.customerModule;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
+import com.KajadhECommerce.Kajadh.Exception.CustomerNotFoundException;
 
 @Service
 @Lazy
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CustomerUpdation {
+	
+	@Autowired
+	private ManageCustomer manageCustomer;
+	
 	private Customer customer;
 
 	public CustomerUpdation() {
@@ -19,16 +28,21 @@ public class CustomerUpdation {
 		return pin == customer.getSecretPin();
 	}
 	
-	public boolean updatePassword(String email, int secretPin, String password) {
-		if (! isValidSecretPin(secretPin))
+	public boolean updatePassword(String email,  String password, int secretPin) throws CustomerNotFoundException {
+	
+		if (! loadCustomer(email) || ! isValidSecretPin(secretPin))
 			return false;
 		
 		customer.getCustomerLogin().setPassword(password);
+		
 		try {
 			UpdateData.<Customer>update(customer);
+			System.out.println("Customer Password Updated ....");
 		}
 		catch(Exception e) {
-			return false;
+			System.out.println("Failed to update customer password");
+			
+			throw e;
 		}
 		return true;
 	}
@@ -45,5 +59,11 @@ public class CustomerUpdation {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean loadCustomer(String mail) throws CustomerNotFoundException {
+		this.customer = manageCustomer.getCustomer(-1, mail);
+		
+		return customer != null;
 	}
 }

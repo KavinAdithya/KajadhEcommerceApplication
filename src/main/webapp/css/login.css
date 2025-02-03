@@ -21,6 +21,8 @@
 	margin-left : 180px;
 }
 .forgot-password {
+	display : block;
+	text-decoration:none;
 	margin:0px;
 	padding:0px;
 	color:red;
