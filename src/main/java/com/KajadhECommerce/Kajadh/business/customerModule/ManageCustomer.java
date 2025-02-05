@@ -50,7 +50,7 @@ public class ManageCustomer {
 	private Customer fetchCustomerViaMail(String mail) throws CustomerNotFoundException {
 		// Native QUery to fetch the customer based on mail.
 		String query = "SELECT c.* FROM customer c "
-				+ "INNER JOIN customer_login cl ON c.id = cl.id WHERE cl.customer_mail = :mail";
+				+ "INNER JOIN customer_login cl ON c.customer_login = cl.id WHERE cl.customer_mail = :mail";
 	
 		// Parameters Object for native query
 		Map<String, String> parameters = new HashMap<>();

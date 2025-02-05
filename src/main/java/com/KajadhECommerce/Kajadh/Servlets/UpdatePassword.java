@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.KajadhECommerce.Kajadh.Exception.CustomerNotFoundException;
+import com.KajadhECommerce.Kajadh.Exception.OperationFailed;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.business.customerModule.CustomerUpdation;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,9 +17,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/customer/update/password")
 public class UpdatePassword extends HttpServlet{
-	
+
+	private static final long serialVersionUID = 2396762421671639649L;
+
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response){
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		int secretPin = Integer.parseInt(request.getParameter("secretPin"));
@@ -28,15 +33,21 @@ public class UpdatePassword extends HttpServlet{
 		System.out.println(email + " " + password);
 		try {
 			out = response.getWriter();
-			customerUpdation.updatePassword(email, password, secretPin);
-			redirectToLogin(response);
-		}
-		catch( CustomerNotFoundException | IOException e) {
-			out.println("Customer Not Found Exception " + e);
+			if (customerUpdation.updatePassword(email, password, secretPin))
+				redirectToLogin(response);
+			else
+				throw new OperationFailed("Invalid Data Provided by User...");
 		}
 		catch(Exception e) {
-			out.println(e);
+			request.setAttribute("exception", e);
+			RequestDispatcher r = request.getRequestDispatcher("/Kajadh/jsp/exception/error.jsp");
+			try {
+				r.forward(request, response);
+			} catch (ServletException | IOException e1) {
+				e1.printStackTrace();
+			}
 		}
+		
 	}
 	
 	private void redirectToLogin(HttpServletResponse response) throws IOException {

@@ -15,4 +15,5 @@
   	<servlet-name>WelcomePage</servlet-name>
   	<url-pattern>/kajadh</url-pattern>
   </servlet-mapping>
+ 
 </web-app>

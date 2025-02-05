@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.Customer;
 import com.KajadhECommerce.Kajadh.Exception.CustomerNotFoundException;
+import com.KajadhECommerce.Kajadh.business.loginValidation.abstraction.AuthenticateLogin;
 
 @Service
 @Lazy
@@ -19,6 +20,9 @@ public class CustomerUpdation {
 	private ManageCustomer manageCustomer;
 	
 	private Customer customer;
+	
+	@Autowired
+	private AuthenticateLogin authenticateLogin;
 
 	public CustomerUpdation() {
 		super();
@@ -30,7 +34,7 @@ public class CustomerUpdation {
 	
 	public boolean updatePassword(String email,  String password, int secretPin) throws CustomerNotFoundException {
 	
-		if (! loadCustomer(email) || ! isValidSecretPin(secretPin))
+		if (! loadCustomer(email) || ! isValidSecretPin(secretPin) || ! authenticateLogin.isValidPassword(password))
 			return false;
 		
 		customer.getCustomerLogin().setPassword(password);
