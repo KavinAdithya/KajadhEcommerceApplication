@@ -1,3 +1,4 @@
+<%@ page import="com.KajadhECommerce.Kajadh.path.PagePath" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,22 +19,28 @@
 	<main class = "main-class">
 		<%
 			String type = request.getParameter("type");
+		
+			type = Character
+					.toUpperCase(type.charAt(0)) + 
+					 type.substring(1)
+					.toLowerCase();
+			
+			PagePath path = PagePath.LOGIN_PAGE_ADMIN;;
+			
 			if (type.equalsIgnoreCase("customer"))
-				type = "Customer";
-			else
-				type = "Admin";
+				path = PagePath.LOGIN_PAGE_CUSTOMER;
+			
 		%>
 		<div class = "login-box">
 			
-			<form class = "form-login" action="../Login/<%= type %>" method="post">
-				<h1 class = "login-heading"><%= type %> Authentication </h1>
+			<form class = "form-login" action=<%=path%> method="post">
+				<h1 class = "login-heading"><%=type%> Authentication </h1>
 				<input class = "email" placeholder = "E-mail" type="email" name="email" required /><br>
 				<input class = "password" placeholder = "Password" type="password" name="password" required/><br>
 				
-			
 			<% if (type.equals("Customer"))  { %>
 			<button class = "submit" type="submit" style="margin-bottom:0px;">Submit</button><br>
-				<a href="/Kajadh/jsp/updatepassword.jsp" class = "forgot-password"> forgot password </a>
+				<a href=<%=PagePath.UPDATE_PASSWORD%> class = "forgot-password"> forgot password </a>
 			<% } else { %>
 				<button class = "submit" type="submit">Submit</button>
 			<% } %>

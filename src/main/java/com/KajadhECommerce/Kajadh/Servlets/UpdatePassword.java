@@ -3,7 +3,6 @@ package com.KajadhECommerce.Kajadh.Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.KajadhECommerce.Kajadh.Exception.CustomerNotFoundException;
 import com.KajadhECommerce.Kajadh.Exception.OperationFailed;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.business.customerModule.CustomerUpdation;
@@ -40,7 +39,7 @@ public class UpdatePassword extends HttpServlet{
 		}
 		catch(Exception e) {
 			request.setAttribute("exception", e);
-			RequestDispatcher r = request.getRequestDispatcher("/Kajadh/jsp/exception/error.jsp");
+			RequestDispatcher r = request.getRequestDispatcher("/jsp/exception/error.jsp");
 			try {
 				r.forward(request, response);
 			} catch (ServletException | IOException e1) {
@@ -54,3 +53,5 @@ public class UpdatePassword extends HttpServlet{
 		response.sendRedirect("/Kajadh/jsp/login.jsp?type=Customer");
 	}
 }
+
+//http://localhost:8080/Kajadh/customer/update/password
