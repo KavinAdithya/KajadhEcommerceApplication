@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import com.KajadhECommerce.Kajadh.Exception.OperationFailed;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.business.customerModule.CustomerUpdation;
+import com.KajadhECommerce.Kajadh.path.PagePath;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -39,18 +40,17 @@ public class UpdatePassword extends HttpServlet{
 		}
 		catch(Exception e) {
 			request.setAttribute("exception", e);
-			RequestDispatcher r = request.getRequestDispatcher("/jsp/exception/error.jsp");
+			RequestDispatcher r = request.getRequestDispatcher(PagePath.ERROR_PAGE.toString());
 			try {
 				r.forward(request, response);
 			} catch (ServletException | IOException e1) {
 				e1.printStackTrace();
 			}
 		}
-		
 	}
 	
 	private void redirectToLogin(HttpServletResponse response) throws IOException {
-		response.sendRedirect("/Kajadh/jsp/login.jsp?type=Customer");
+		response.sendRedirect(PagePath.LOGIN_PAGE_CUSTOMER.toString());
 	}
 }
 

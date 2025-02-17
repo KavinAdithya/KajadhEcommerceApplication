@@ -1,12 +1,15 @@
+<%@ page import="com.KajadhECommerce.Kajadh.path.PagePath" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kajadh Application</title>
-    <link rel = "stylesheet" href="../css/welcome.css?v=1.0"/>
-    <link  rel="icon" href="../images/kajadhlogo.webp"/>
-    
+	<link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp">
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css"/>
 </head>
 <body class = "main-body">
     <div class = "outer">
@@ -65,11 +68,11 @@
                 <p>
                     Admin !
                 </p>
-                <a href="signinAdmin.jsp">
+                <a href=<%= PagePath.SIGNIN_PAGE_ADMIN_REDIRECT %>>
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
-                <a href="login.jsp?type=Admin">
+                <a href="/Kajadh/login/admin">
                     Already Existing !
                 </a>
             </div>
@@ -78,11 +81,11 @@
                 <p>
                     Customer !
                 </p>
-                <a href="signinCustomer.jsp">
+                <a href=<%= PagePath.SIGNIN_PAGE_CUSTOMER_REDIRECT %>>
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
-                <a href="login.jsp?type=Customer">
+                <a href=<%= PagePath.LOGIN_PAGE_CUSTOMER_REDIRECT %>>
                     Already Existing !
                 </a>
             </div>

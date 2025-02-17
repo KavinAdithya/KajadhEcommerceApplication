@@ -9,8 +9,7 @@ import java.io.IOException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-@SpringBootApplication
-@WebServlet("/home")
+@WebServlet("/home1")
 public class KajadhApplication extends HttpServlet{
 
 	private static final long serialVersionUID = 8298808549195723680L;

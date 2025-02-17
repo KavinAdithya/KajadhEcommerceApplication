@@ -4,6 +4,8 @@ package com.KajadhECommerce.Kajadh.SpringContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
+
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 
@@ -26,8 +28,11 @@ public class Contex implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		if (applicationContext instanceof AnnotationConfigApplicationContext) {
 			((AnnotationConfigApplicationContext) applicationContext).close();
+			 AbandonedConnectionCleanupThread.checkedShutdown();
+	            System.out.println("MySQL AbandonedConnectionCleanupThread shut down successfully.");
 		}
 	}
+	
 	
 	public static ApplicationContext getContext() {
 		return applicationContext;

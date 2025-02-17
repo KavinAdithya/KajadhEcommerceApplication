@@ -6,10 +6,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Log In</title>
-	<link rel = "stylesheet" href="../css/welcome.css?v=1.0"/>
-    <link rel="icon" href="../images/kajadhlogo.webp"/>
-    <link rel = "stylesheet" href = "../css/signin.css?v=1.0"/>
-    <link rel = "stylesheet" href = "../css/login.css?v=1.0"/>
+	<link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css?v=1.0"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css?v=1.0"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css?v=1.1"/>
+	
+    <style type="text/css">
+    
+    </style>
 </head>
 <body class = "main-body">
 

@@ -13,6 +13,10 @@ import com.KajadhECommerce.Kajadh.Entities.Administrator;
 import com.KajadhECommerce.Kajadh.adminModule.abstraction.AdminExist;
 import com.KajadhECommerce.Kajadh.business.loginValidation.abstraction.AuthenticateLogin;
 
+/**
+ * @author KaVin
+ * Bean Resp
+ */
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class AdministratorValidationEntity{

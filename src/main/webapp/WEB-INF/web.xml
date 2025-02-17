@@ -15,5 +15,14 @@
   	<servlet-name>WelcomePage</servlet-name>
   	<url-pattern>/kajadh</url-pattern>
   </servlet-mapping>
- 
+ 	
+ 	<mime-mapping>
+    <extension>css</extension>
+    <mime-type>text/css</mime-type>
+</mime-mapping>
+<mime-mapping>
+    <extension>webp</extension>
+    <mime-type>image/webp</mime-type>
+</mime-mapping>
+
 </web-app>
