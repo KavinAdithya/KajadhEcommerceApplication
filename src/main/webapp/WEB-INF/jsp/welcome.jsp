@@ -72,7 +72,7 @@
                     New $
                 </a>
                 <span style="margin-left: 10px;"></span>
-                <a href="/Kajadh/login/admin">
+                <a href=<%= PagePath.LOGIN_PAGE_ADMIN_REDIRECT%>>
                     Already Existing !
                 </a>
             </div>

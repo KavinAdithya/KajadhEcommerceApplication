@@ -17,17 +17,8 @@ public class KajadhWelcomeRedirect extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-//		RequestDispatcher dispatchRequest = request.getRequestDispatcher(PagePath.HOME_PAGE_REDIRECT.toString());
-//		
-//		try {
-//			dispatchRequest.forward(request, response);
-//		} catch (ServletException | IOException e) {
-//			e.printStackTrace();
-//		}
-		
 		try {
-//			response.g(PagePath.HOME_PAGE_REDIRECT.toString());
-			request.getRequestDispatcher(PagePath.HOME_PAGE_REDIRECT.toString()).forward(request, response);;
+			request.getRequestDispatcher(PagePath.HOME_PAGE.toString()).forward(request, response);;
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

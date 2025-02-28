@@ -8,13 +8,15 @@ import com.KajadhECommerce.Kajadh.Entities.AdminLogin;
 import com.KajadhECommerce.Kajadh.Entities.Administrator;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.adminModule.AdministratorValidationEntity;
+import com.KajadhECommerce.Kajadh.path.PagePath;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/SignIn/Admin")
+@WebServlet("/signin/admin")
 public class AdminRegister extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -61,6 +63,17 @@ public class AdminRegister extends HttpServlet{
 	
 	private void redirectToLogin(HttpServletResponse response) throws IOException {
 		console.println("Redirected to Admin Login");
-		response.sendRedirect("/Kajadh/jsp/login.jsp?type=Admin");
+		response.sendRedirect(PagePath.LOGIN_PAGE_ADMIN_REDIRECT.toString());
+	}
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		console.println("Redirected to Admin Login");
+		try {
+			request.getRequestDispatcher(PagePath.SIGNIN_PAGE_ADMIN.toString())
+			.forward(request, response);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

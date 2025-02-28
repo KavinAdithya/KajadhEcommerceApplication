@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/Login/Admin")
+@WebServlet("/login/admin")
 public class AdminAuthenticator extends HttpServlet{
 	
 	private static final long serialVersionUID = 8605827134800917681L;
