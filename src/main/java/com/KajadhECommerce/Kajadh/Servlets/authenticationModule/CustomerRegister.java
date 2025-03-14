@@ -1,22 +1,25 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
+
+import static java.lang.Byte.parseByte;
+import static java.lang.Short.parseShort;
 
 import java.io.IOException;
 import java.util.Arrays;
-import static java.lang.Byte.parseByte;
-import static java.lang.Short.parseShort;
 
 import com.KajadhECommerce.Kajadh.Entities.Customer;
 import com.KajadhECommerce.Kajadh.Entities.CustomerLogin;
 import com.KajadhECommerce.Kajadh.Entities.DateOfBirth;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
 import com.KajadhECommerce.Kajadh.business.customerModule.CustomerValidationEntity;
+import com.KajadhECommerce.Kajadh.path.PagePath;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/SignIn/Customer")
+@WebServlet("/signin/customer")
 public class CustomerRegister extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -43,8 +46,9 @@ public class CustomerRegister extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			response.sendRedirect("/Kajadh/jsp/signinCustomer.jsp");
-		} catch (IOException e) {
+			request.getRequestDispatcher(PagePath.SIGNIN_PAGE_CUSTOMER.toString())
+					.forward(request, response);
+		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -75,7 +79,7 @@ public class CustomerRegister extends HttpServlet{
 	}
 	
 	private void redirectToLogin(HttpServletResponse response) throws IOException {
-		response.sendRedirect("/Kajadh/jsp/login.jsp?type=Customer");
+		response.sendRedirect(PagePath.LOGIN_PAGE_CUSTOMER_REDIRECT.toString());
 	}
 	
 	private void printMessageFailed(HttpServletResponse response) throws IOException {

@@ -1,4 +1,4 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
 
 import java.io.IOException;
 import java.io.PrintStream;

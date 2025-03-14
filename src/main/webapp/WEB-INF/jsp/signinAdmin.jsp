@@ -1,5 +1,7 @@
+<%@ page import="com.KajadhECommerce.Kajadh.path.PagePath" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
 			<jsp:include page="header.jsp"/>
 		</div>
         <div class = "signin-form">
-            <form action="/Kajadh/SignIn/Admin" method="post">
+            <form action=<%= PagePath.SIGNIN_PAGE_ADMIN_REDIRECT %> method="post">
                 <h1 class="customer" style="margin-left: 160px;">
                     Admin 
                 </h1>

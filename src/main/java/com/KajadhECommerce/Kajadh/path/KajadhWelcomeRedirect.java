@@ -1,8 +1,6 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.path;
 
 import java.io.IOException;
-
-import com.KajadhECommerce.Kajadh.path.PagePath;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

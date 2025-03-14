@@ -1,17 +1,19 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.KajadhECommerce.Kajadh.model.CustomerEntityChecker;
+import com.KajadhECommerce.Kajadh.path.PagePath;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/Login/Customer")
+@WebServlet("/login/customer")
 public class CustomerAuthenticator extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -44,8 +46,9 @@ public class CustomerAuthenticator extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			response.sendRedirect("/Kajadh/jsp/login.jsp?type=Customer");
-		} catch (IOException e) {
+			request.getRequestDispatcher(PagePath.LOGIN_PAGE_CUSTOMER.toString())
+					.forward(request, response);
+		} catch (IOException | ServletException e) {
 			e.printStackTrace();
 		}
 	}

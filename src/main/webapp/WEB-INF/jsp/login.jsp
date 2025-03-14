@@ -29,10 +29,10 @@
 					 type.substring(1)
 					.toLowerCase();
 			
-			PagePath path = PagePath.LOGIN_PAGE_ADMIN;;
+			PagePath path = PagePath.LOGIN_PAGE_ADMIN_REDIRECT;
 			
 			if (type.equalsIgnoreCase("customer"))
-				path = PagePath.LOGIN_PAGE_CUSTOMER;
+				path = PagePath.LOGIN_PAGE_CUSTOMER_REDIRECT;
 			
 		%>
 		<div class = "login-box">
@@ -44,7 +44,7 @@
 				
 			<% if (type.equals("Customer"))  { %>
 			<button class = "submit" type="submit" style="margin-bottom:0px;">Submit</button><br>
-				<a href=<%=PagePath.UPDATE_PASSWORD%> class = "forgot-password"> forgot password </a>
+				<a href=<%=PagePath.UPDATE_PASSWORD_SERVLET%> class = "forgot-password"> forgot password </a>
 			<% } else { %>
 				<button class = "submit" type="submit">Submit</button>
 			<% } %>

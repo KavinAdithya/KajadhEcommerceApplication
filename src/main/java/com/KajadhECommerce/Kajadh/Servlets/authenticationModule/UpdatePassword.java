@@ -1,4 +1,4 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,8 +49,19 @@ public class UpdatePassword extends HttpServlet{
 		}
 	}
 	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.getRequestDispatcher(PagePath.UPDATE_PASSWORD.toString())
+			.forward(request, response);
+		}
+		catch(IOException | ServletException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void redirectToLogin(HttpServletResponse response) throws IOException {
-		response.sendRedirect(PagePath.LOGIN_PAGE_CUSTOMER.toString());
+		response.sendRedirect(PagePath.LOGIN_PAGE_CUSTOMER_REDIRECT.toString());
 	}
 }
 

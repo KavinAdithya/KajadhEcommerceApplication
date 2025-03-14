@@ -1,0 +1,29 @@
+package com.KajadhECommerce.Kajadh.Servlets.productView;
+
+import java.io.IOException;
+
+import com.KajadhECommerce.Kajadh.path.PagePath;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/products")
+public class DisplayProducts extends HttpServlet{
+	
+	private static final long serialVersionUID = -7237611716651499524L;
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.getRequestDispatcher(PagePath.PRODUCTS_VIEW.toString())
+					.forward(request, response);
+		}
+		catch(IOException | ServletException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

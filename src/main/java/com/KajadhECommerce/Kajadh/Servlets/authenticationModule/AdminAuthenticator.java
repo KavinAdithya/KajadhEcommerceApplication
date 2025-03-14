@@ -1,10 +1,12 @@
-package com.KajadhECommerce.Kajadh.Servlets;
+package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.KajadhECommerce.Kajadh.model.AdminEntityChecker;
+import com.KajadhECommerce.Kajadh.path.PagePath;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -47,8 +49,9 @@ public class AdminAuthenticator extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			response.sendRedirect("/Kajadh/jsp/login.jsp?type=Admin");
-		} catch (IOException e) {
+			request.getRequestDispatcher(PagePath.LOGIN_PAGE_ADMIN.toString())
+				.forward(request, response);
+		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 	}
