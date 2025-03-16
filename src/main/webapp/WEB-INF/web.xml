@@ -25,4 +25,11 @@
     <mime-type>image/webp</mime-type>
 </mime-mapping>
 
+<jsp-config>
+        <taglib>
+            <taglib-uri>http://jakarta.apache.org/jsp/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.0.jar</taglib-location>
+        </taglib>
+    </jsp-config>
+
 </web-app>

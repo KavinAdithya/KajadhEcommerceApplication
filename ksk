@@ -1,0 +1,247 @@
+[33mcommit 58cf0e3e180460cdf81086e246b06d8025726959[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Feb 28 07:40:34 2025 +0530
+
+    Debuging Path
+
+[33mcommit 1794e051a72bf049c69560da40bd1d84cefe4c95[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Feb 17 07:34:52 2025 +0530
+
+    After One week i resolved / mapping issue which will not load my css file'
+
+[33mcommit 6d9f21b2c9057910771cfb9d8a28bc7a0299307c[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Feb 7 07:34:30 2025 +0530
+
+    Avoiding Hardcording for path by replacing it with enums
+
+[33mcommit 54da640fdc4c503d3c89c978be4726442113c547[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Wed Feb 5 07:41:10 2025 +0530
+
+    Forgot Password feature developed
+
+[33mcommit 78acc5f98d83262ab709f23f5f3a85fbcaad58d8[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Feb 3 07:17:11 2025 +0530
+
+    developed web page and servlet for forgot password
+
+[33mcommit 2e7726d5292a5cd2b0ecaaaa7464a5101afc42ce[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Tue Jan 28 07:40:37 2025 +0530
+
+    Forgot Password feature developing for customer based an secret pin
+
+[33mcommit d896241f12c21075d1fd401c36b3da71f507a80e[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Jan 26 17:56:08 2025 +0530
+
+    Unit test errpr resolved
+
+[33mcommit 51ef3f8b212af0c2cf5d5dfdf196e6d32a5143a2[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Jan 26 17:53:11 2025 +0530
+
+    Login and Admin Module login and signin developed and tester=d
+
+[33mcommit 71054573d1a7eee9f1a0f89ab71f5907f2b2d774[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Thu Jan 23 07:34:34 2025 +0530
+
+    Admin Register feature developed and tested
+
+[33mcommit 349795d79aafdc562f6915c828e9f8d09aa4662a[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sat Jan 18 20:14:56 2025 +0530
+
+    Customer module also modularised and refining code for reusability and increasing readability and proceeding unit test cases for it under progress
+
+[33mcommit f9c148062346680219038c8e7979499adb68c864[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Jan 17 16:50:20 2025 +0530
+
+    Code Orgainsed and Modularized in admin Sign in phase
+
+[33mcommit 904f4e6b696a82db82d760bf4bdf4cc614a8ee16[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Thu Jan 16 18:25:17 2025 +0530
+
+    Customer Module Developed
+
+[33mcommit afe624a1f7c25d877c9ce343d91a0e2d864cec79[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Wed Jan 15 15:17:57 2025 +0530
+
+    Integration of Spring core with tomcatanf tested admin login
+
+[33mcommit 235eff94a2451c7bb826add71b515fb0dfcf65f8[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Jan 13 10:30:21 2025 +0530
+
+    Building Login module
+
+[33mcommit 80f8b99fcfd268af21f9398eca05c5da5e17844d[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Thu Jan 9 07:37:51 2025 +0530
+
+    Developing Authentication Module
+
+[33mcommit 758a7d867356db1edcadd7e34605ba767fe6534f[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Tue Jan 7 07:35:51 2025 +0530
+
+    Creating Login Pages
+
+[33mcommit c374a87f00ead409ebc3732f63cd496cba1d5d44[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sat Jan 4 19:03:53 2025 +0530
+
+    Home page is converted into dynamic for reusing header and footers
+
+[33mcommit 53eefbb6d5d25cb1ae492894f8bd9d06797e4bb9[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Jan 3 18:12:50 2025 +0530
+
+     Completed Welcome Page
+
+[33mcommit a2356ef570e78a80a3912cfeb1ccce5448c71be7[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sat Dec 28 19:17:20 2024 +0530
+
+    adding Dependency for jsp and jstl
+
+[33mcommit 761ea1414e1819df0dfb1e7839d60908c32e96ce[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Dec 23 07:09:38 2024 +0530
+
+    Admin and Customer new datas are persisted and tested using junit test
+
+[33mcommit 32d5a2d8694c7bd4932962dbd4141df60df6ee80[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Dec 22 18:26:50 2024 +0530
+
+    Admin Validation Developed and tested developing to persist data in database
+
+[33mcommit a14e0cad1b0d27a99c4c4981b31e9b58e01d1ec2[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Dec 22 12:24:28 2024 +0530
+
+    New Customer Validation feature added and tested . Now Working Email validation using regular expression
+
+[33mcommit 056317d2397d98c1dd5bc38a57ba639a956a08ea[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Dec 20 04:57:22 2024 +0530
+
+    Documentation added for the customer object
+
+[33mcommit 2a1a0bfbcff79e0864cf2c5a7e919a8293a5078d[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Dec 15 08:32:19 2024 +0530
+
+    Developing Customer validation for new Customer. Date Validation completed and tested
+
+[33mcommit 2333303ac71966d1049c2ef63559cc93631c8226[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Wed Dec 11 11:38:22 2024 +0530
+
+    Product Module Tested using Junit testing
+
+[33mcommit 201661ff1845510b3c64f8148616a6dbef50f53b[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Dec 8 15:56:37 2024 +0530
+
+    Product Module Documented fully andf customer module developed features are tested completely using Unit testing Junit 5
+
+[33mcommit 8eee8fa788d1ba66c8dfa5fadaffc76a63905ff2[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sat Dec 7 13:36:19 2024 +0530
+
+    Customer module developing and Integrating Junit testing for unit test all the modules
+
+[33mcommit 84588c4ae8a5d4a82f3b8132e38b97579f465b45[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Dec 6 17:15:51 2024 +0530
+
+    Testing Checkout feature
+
+[33mcommit 4a8cda6e4116b104c717ff5f3663e452a1b69c80[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Fri Dec 6 12:57:56 2024 +0530
+
+    Developing Product Operation and checkout feature and testing it parallely
+
+[33mcommit 277d5dd4c7f389fae1a04cff1b8ac0aae52585a0[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Wed Dec 4 11:43:42 2024 +0530
+
+    Developing an product operation
+
+[33mcommit 3fb9728095351f0d5ef4f277416a9f2b3f1a0f83[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Wed Dec 4 07:38:20 2024 +0530
+
+    Debugged and enabled second level cache
+
+[33mcommit a0bec845eb04b489bc6739222f761cd150f8f513[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Tue Dec 3 11:45:38 2024 +0530
+
+    Debugging the issues
+
+[33mcommit 93b9761bb51f02329d9b4f271cf962da1fcc01fe[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Tue Dec 3 07:51:31 2024 +0530
+
+    Debugging Crud Operations'
+
+[33mcommit 9e8af8ccbc555537fd7e74e20a28f581b2bc8231[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Dec 2 11:52:08 2024 +0530
+
+    Debugged Enities and now Creating CRUD operations using Hibernate
+
+[33mcommit aa161d4c9a523cddf2f09b8df4aa3851f0269f16[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Mon Dec 2 07:38:06 2024 +0530
+
+    Developed Entities and its configuration related to ORM now working on testing it progress'
+
+[33mcommit b035ffa9f5931bc3d3bf4ae51b99f2bde4f05c33[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Dec 1 14:07:44 2024 +0530
+
+    Developing all Entities using Hibernate ORM framework
+
+[33mcommit 3f6574e316059ed30e63e89a4b167c9b770a6496[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sat Nov 30 06:58:43 2024 +0530
+
+    Converted the Servlet API to lates version and verified tomcat performance
+
+[33mcommit 53d3ceaa462d5d462ff3e62f559430851410b9e8[m
+Merge: 9b508d0 7acbd7c
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Nov 24 07:47:56 2024 +0530
+
+    Merge branch 'master' of https://github.com/KavinAdithya/KajadhEcommerceApplication
+    Local Maven Kajadh Project is merged with remote repo branch master
+
+[33mcommit 9b508d0eb4655b2cfa977a3619c417d9b43672a3[m
+Author: KaVin S <kavinadithya3@gmail.com>
+Date:   Sun Nov 24 07:30:43 2024 +0530
+
+    Initial Set Up for Kajadh ECommerce Application
+
+[33mcommit 7acbd7cc718132de7deb55f732748dc39d821034[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: KaVin <kavinadithya3@gmail.com>
+Date:   Thu Nov 21 07:27:15 2024 +0530
+
+    Update README.md
+
+[33mcommit 725ffbd499b8ba172d56c1a6aa256568091f2941[m
+Author: KaVin <kavinadithya3@gmail.com>
+Date:   Thu Nov 21 07:25:31 2024 +0530
+
+    Initial commit

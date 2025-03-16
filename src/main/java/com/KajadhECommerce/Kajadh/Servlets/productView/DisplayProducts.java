@@ -1,7 +1,11 @@
 package com.KajadhECommerce.Kajadh.Servlets.productView;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.KajadhECommerce.Kajadh.Entities.Product;
+import com.KajadhECommerce.Kajadh.SpringContext.Contex;
+import com.KajadhECommerce.Kajadh.business.productModule.ProductOperation;
 import com.KajadhECommerce.Kajadh.path.PagePath;
 
 import jakarta.servlet.ServletException;
@@ -17,6 +21,11 @@ public class DisplayProducts extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		List<Product> products = Contex.getContext()
+										.getBean(ProductOperation.class)
+										.getProducts();
+		request.setAttribute("products", products);
+		
 		try {
 			request.getRequestDispatcher(PagePath.PRODUCTS_VIEW.toString())
 					.forward(request, response);
