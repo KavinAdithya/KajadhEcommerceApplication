@@ -14,33 +14,40 @@
 	<title>Kajadh</title>
 	<link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp">
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css"/>
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDisplay.css"/>
 </head>
 <body class = "main-body">
     <div class = "outer">
     		<jsp:include page = "/WEB-INF/jsp/header.jsp"/>
-		
-        <div class = "middle-content">
-
-        </div>
-        
-        	<%
-        		List<Product> products = (List<Product>)request.getAttribute("products");
-        	%>
-        	
-        	<%= products.get(0) %>
+	</div>
+      <div class="products">        
         	
         	<c:forEach var="item" items="${products}">
-        		<p>${item}</p>
-        	</c:forEach>
+        		<div class="product-outer">
         	
-        	<c:forEach var="i" begin="1" end="5">
-        		<p> Item : <c:out value="${i}"/></p>        		
+        			<div class="product-data">
+        				<p>
+        					Brand Name : ${item.brandName}
+        				</p>
+        				<p> Model Name : ${item.name} </p>
+        				<p> Quantity : ${item.quantity} </p>
+        				<p> Price : ${item.price} </p>
+      
+        				
+        			</div>
+        			<div class="product-spec">
+        				<c:forEach var = "spec" items="${item.specification}">
+        					<li> ${spec.key} : ${spec.value} </li>
+        				</c:forEach>
+        			</div>
+        		</div>
         	</c:forEach>
-        	
+ 			
+ 			
+        	</div>
         
         <div>
             <jsp:include page = "/WEB-INF/jsp/footer.jsp"/>
         </div>
-    </div>
 </body>
 </html>

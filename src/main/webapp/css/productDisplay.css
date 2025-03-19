@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.product-outer {
+	display:grid;
+	border: 2px solid black;
+	background-color:white;
+	font-weight:bold;
+	width:800px;
+	height:200px;
+	grid-template-columns:1fr 1fr;
+	margin-bottom:1000px;
+}
+.product-data{
+	border: 2px solid green;
+	display:inline-block;
+}
+.product-spec{
+	display:inline-block;
+	border: 2px solid red;
+}
+.products {
+	display:grid;
+	justify-content:center;
+}
