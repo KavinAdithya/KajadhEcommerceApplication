@@ -3,18 +3,18 @@ package com.KajadhECommerce.Kajadh.Driver;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.hibernate.Session;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import com.KajadhECommerce.Kajadh.DataAccess.Connectivity;
 import com.KajadhECommerce.Kajadh.DataAccess.DeleteData;
 import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
-import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
-import com.KajadhECommerce.Kajadh.Entities.*;
+import com.KajadhECommerce.Kajadh.Entities.AdminLogin;
+import com.KajadhECommerce.Kajadh.Entities.Administrator;
+import com.KajadhECommerce.Kajadh.Entities.Customer;
+import com.KajadhECommerce.Kajadh.Entities.CustomerLogin;
+import com.KajadhECommerce.Kajadh.Entities.DateOfBirth;
+import com.KajadhECommerce.Kajadh.Entities.Order;
+import com.KajadhECommerce.Kajadh.Entities.Product;
 import com.KajadhECommerce.Kajadh.SpringContext.Contex;
-import com.KajadhECommerce.Kajadh.SpringContext.KajadhConfigurationClass;
 import com.KajadhECommerce.Kajadh.business.productModule.CheckOut;
 import com.KajadhECommerce.Kajadh.business.productModule.ProductOperation;
 
@@ -62,7 +62,7 @@ public class Driver {
 		spec.put("kavin", "19");
 		spec.put("pizels", "8k");
 		
-		var product = new Product("MegaBk", "1", 2, 23322.0, spec);
+		var product = new Product("MegaBk", "1", null,  2, 23322.0, spec);
 		
 //		po.addProduct(product);
 		
@@ -115,7 +115,7 @@ public class Driver {
 		spec.put("ram", "123");
 		spec.put("rom", "456");
 		
-		var product = new Product("Techno", "122333", 1, 122.0, spec);
+		var product = new Product("Techno", "122333", null,  1, 122.0, spec);
 		
 		InsertData.<Product>persist(product);
 	}
@@ -125,7 +125,7 @@ public class Driver {
 		spec.put("ram", "123");
 		spec.put("rom", "456");
 		
-		var product = new Product("Techno", "122333", 1, 122.0, spec);
+		var product = new Product("Techno", "122333", null, 1, 122.0, spec);
 		product.setId(1);
 		
 		var customerLogin = new CustomerLogin("122", "passs");

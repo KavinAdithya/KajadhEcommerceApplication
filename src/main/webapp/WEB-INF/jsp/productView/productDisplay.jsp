@@ -13,8 +13,8 @@
 	<meta charset="UTF-8">
 	<title>Kajadh</title>
 	<link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp">
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css"/>
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDisplay.css"/>
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css?v=1.0"/>
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDisplay.css?v=1.0"/>
 </head>
 <body class = "main-body">
     <div class = "outer">
@@ -24,21 +24,27 @@
         	
         	<c:forEach var="item" items="${products}">
         		<div class="product-outer">
-        	
+        			
+        			<div>
+        				<img style="margin-left:50px;" class="product-image" src="${item.imageAdd}"/>
+        			</div>
+        			
         			<div class="product-data">
-        				<p>
-        					Brand Name : ${item.brandName}
-        				</p>
-        				<p> Model Name : ${item.name} </p>
-        				<p> Quantity : ${item.quantity} </p>
-        				<p> Price : ${item.price} </p>
-      
         				
+        				<div class="model-data">
+        					<p>Brand Name : ${item.brandName}</p>
+        					<p> Model Name : ${item.name} </p>
+        					<p> Quantity : ${item.quantity} </p>
+      	  					<p> Price : ${item.price} </p>
+        				</div>
+      
         			</div>
         			<div class="product-spec">
-        				<c:forEach var = "spec" items="${item.specification}">
-        					<li> ${spec.key} : ${spec.value} </li>
-        				</c:forEach>
+        				<div class="model-spec">
+    	    				<c:forEach var = "spec" items="${item.specification}">
+        						<li> ${spec.key} : ${spec.value} </li>
+        					</c:forEach>
+        				</div>
         			</div>
         		</div>
         	</c:forEach>

@@ -41,6 +41,9 @@ public class Product {
 	@Column(name = "product_price")
 	private double price;
 	
+	@Column(name="image_address")
+	private String imageAdd;
+	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "product_specifications",joinColumns =  @JoinColumn(name = "product_spec"))
 	@MapKeyColumn(name = "specification_name")
@@ -52,9 +55,10 @@ public class Product {
 		super();
 	}
 	
-	public Product(String brandName, String name, int quantity, double price, Map<String, String> specification) {
+	public Product(String brandName, String name, String imageAdd, int quantity, double price, Map<String, String> specification) {
 		this.brandName = brandName;
 		this.name = name;
+		this.imageAdd = imageAdd;
 		this.quantity = quantity;
 		this.price = price;
 		this.specification = specification;
@@ -82,6 +86,14 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getImageAdd() {
+		return imageAdd;
+	}
+
+	public void setImageAdd(String imageAdd) {
+		this.imageAdd = imageAdd;
 	}
 
 	public int getQuantity() {
