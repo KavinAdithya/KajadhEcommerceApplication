@@ -1,59 +1,88 @@
 <%@ page isELIgnored="false" %>
-<%@ page import= "java.util.List, 
+<%@ page import="java.util.List, 
 					com.KajadhECommerce.Kajadh.Entities.Product, 
 					com.KajadhECommerce.Kajadh.SpringContext.Contex,
 					com.KajadhECommerce.Kajadh.business.productModule.ProductOperation" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Kajadh</title>
-	<link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp">
+	<title>Kajadh | Online Store</title>
+	
+	<!-- Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+
+	<!-- Favicon -->
+	<link rel="icon" href="${pageContext.request.contextPath}/images/newlogo.webp">
+	
+	<!-- Custom CSS -->
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css?v=1.0"/>
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDisplay.css?v=1.0"/>
 </head>
-<body class = "main-body">
-    <div class = "outer">
-    		<jsp:include page = "/WEB-INF/jsp/header.jsp"/>
+
+<body class="bg-gray-100 text-gray-900">
+    
+    <!-- Header -->
+    <div class="mb-12">
+    	<jsp:include page="/WEB-INF/jsp/header.jsp"/>
 	</div>
-      <div class="products">        
-        	
-        	<c:forEach var="item" items="${products}">
-        		<div class="product-outer">
-        			
-        			<div>
-        				<img style="margin-left:50px;" class="product-image" src="${item.imageAdd}"/>
-        			</div>
-        			
-        			<div class="product-data">
-        				
-        				<div class="model-data">
-        					<p>Brand Name : ${item.brandName}</p>
-        					<p> Model Name : ${item.name} </p>
-        					<p> Quantity : ${item.quantity} </p>
-      	  					<p> Price : ${item.price} </p>
-        				</div>
-      
-        			</div>
-        			<div class="product-spec">
-        				<div class="model-spec">
-    	    				<c:forEach var = "spec" items="${item.specification}">
-        						<li> ${spec.key} : ${spec.value} </li>
-        					</c:forEach>
-        				</div>
-        			</div>
-        		</div>
-        	</c:forEach>
- 			
- 			
-        	</div>
+
+    <!-- Product Grid -->
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Featured Products</h1>
         
-        <div>
-            <jsp:include page = "/WEB-INF/jsp/footer.jsp"/>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            
+            <c:forEach var="item" items="${products}">
+                <div class="bg-white shadow-md rounded-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+                    
+                    <!-- Product Image -->
+                    <div class="relative">
+                        <img class="w-full h-60 object-cover" src="${item.imageAdd}" alt="Product Image">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">New</span>
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800">${item.brandName}</h2>
+                        <p class="text-gray-600 text-sm">Model: ${item.name}</p>
+                        <p class="text-gray-600 text-sm">Quantity: ${item.quantity}</p>
+                        <p class="text-red-500 font-bold text-lg">₹${item.price}</p>
+                    </div>
+                    
+                    <!-- Specifications -->
+                    <div class="px-4 py-2 border-t">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-1">Specifications:</h3>
+                        <div class="text-xs text-gray-600">
+                            <c:forEach var="spec" items="${item.specification}">
+                                <p><span class="font-medium">${spec.key}:</span> ${spec.value}</p>
+                            </c:forEach>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="p-4 flex justify-between">
+                        <button class="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
+                            Add to Cart
+                        </button>
+                        <button class="w-1/2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </c:forEach>
+
         </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-12">
+        <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
+    </div>
+
 </body>
 </html>

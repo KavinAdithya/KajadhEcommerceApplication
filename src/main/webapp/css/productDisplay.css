@@ -1,37 +1,15 @@
 @charset "UTF-8";
 .product-outer {
+	border-radius:40px;
 	display:grid;
-	border: 2px solid black;
 	background-color:white;
 	font-weight:bold;
-	width:1000px;
-	height:350px;
-	grid-template-columns:1fr 2fr 2fr;
+	width:900px;
+	height:250px;
+	grid-template-columns:1fr 1.5fr 1.5fr;
 	margin-bottom:100px;
+	padding:30px;
 }
-.product-image {
-	height:300px;
-	width:120px;
-	margin-left:100px;
-	margin-top:20px;
-}
-
-.product-data{
-	border: 2px solid green;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	height:100vh;
-	background-color:grey;
-}
-.product-spec{
-	display:inline-block;
-	border: 2px solid red;
-}
-.products {
-	display:grid;
-	justify-content:center;
-}
-.model-data {
-	margin-left
+body {
+	font-family:Times New Roman;
 }
