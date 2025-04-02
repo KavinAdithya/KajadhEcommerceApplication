@@ -13,25 +13,19 @@
 	<meta charset="UTF-8">
 	<title>Kajadh | Online Store</title>
 	
-	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
 
-	<!-- Favicon -->
+
 	<link rel="icon" href="${pageContext.request.contextPath}/images/newlogo.webp">
-	
-	<!-- Custom CSS -->
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/welcome.css?v=1.0"/>
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDisplay.css?v=1.0"/>
+
 </head>
 
 <body class="bg-gray-100 text-gray-900">
-    
-    <!-- Header -->
+
     <div class="mb-12">
     	<jsp:include page="/WEB-INF/jsp/header.jsp"/>
 	</div>
 
-    <!-- Product Grid -->
     <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Featured Products</h1>
         
@@ -46,7 +40,7 @@
                         <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">New</span>
                     </div>
 
-                    <!-- Product Details -->
+           
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-800">${item.brandName}</h2>
                         <p class="text-gray-600 text-sm">Model: ${item.name}</p>
@@ -54,7 +48,7 @@
                         <p class="text-red-500 font-bold text-lg">₹${item.price}</p>
                     </div>
                     
-                    <!-- Specifications -->
+  
                     <div class="px-4 py-2 border-t">
                         <h3 class="text-sm font-semibold text-gray-700 mb-1">Specifications:</h3>
                         <div class="text-xs text-gray-600">
@@ -64,7 +58,6 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="p-4 flex justify-between">
                         <button class="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
                             Add to Cart
@@ -79,7 +72,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <div class="mt-12">
         <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
     </div>

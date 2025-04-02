@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kajadh - Your One-Stop Shopping Destination</title>
 
-    <link rel="icon" href="${pageContext.request.contextPath}/images/kajadhlogo.webp">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/newlogo.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
     
