@@ -10,7 +10,6 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/images/newlogo.webp"/>
  
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -21,7 +20,6 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Header -->
     <jsp:include page="header.jsp"/>
 
     <main class="flex-grow flex items-center justify-center px-4">
@@ -72,7 +70,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <jsp:include page="footer.jsp"/>
 
 </body>

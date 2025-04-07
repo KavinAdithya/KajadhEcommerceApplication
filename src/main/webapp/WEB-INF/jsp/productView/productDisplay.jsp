@@ -59,10 +59,10 @@
                     </div>
 
                     <div class="p-4 flex justify-between">
-                        <button class="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
+                        <button class="w-1/3 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
                             Add to Cart
                         </button>
-                        <button class="w-1/2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm">
+                        <button style="margin-left:15px;"class="w-1/3 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm">
                             Buy Now
                         </button>
                     </div>

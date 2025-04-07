@@ -1,11 +1,11 @@
 package com.KajadhECommerce.Kajadh.Servlets.authenticationModule;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import com.KajadhECommerce.Kajadh.model.AdminEntityChecker;
 import com.KajadhECommerce.Kajadh.path.PagePath;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,18 +28,29 @@ public class AdminAuthenticator extends HttpServlet{
 			
 			System.out.println(mail + " " + password);
 			
-			PrintWriter out = response.getWriter();
+			RequestDispatcher resDis = null;
 			
 			if (new AdminEntityChecker(mail, password)
-					.isAccountValid())
-				out.print("Successfully Login Admin : " + mail);
-			else 
-				out.print("Failed to log in"); 	
-
+					.isAccountValid()) {
+				response.sendRedirect(PagePath.PRODUCTS_VIEW.toString());
+				
+			}
+			else { 
+				
+				resDis = request.getRequestDispatcher(PagePath.ERROR_PAGE.toString());	
+				request.setAttribute("message", "Admin Data in Not a Valid !!!");
+				resDis.forward(request, response);
+			}
+		
 		}
 		catch (Exception e) {
+			RequestDispatcher resDis = request.getRequestDispatcher(PagePath.ERROR_PAGE.toString());
+			request.setAttribute("exception", e);
 			try {
-				response.getWriter().println(e);
+				resDis.forward(request, response);
+			} catch (ServletException e1) {
+
+				e1.printStackTrace();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
