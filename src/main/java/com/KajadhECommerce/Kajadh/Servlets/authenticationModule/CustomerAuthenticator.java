@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 @WebServlet("/login/customer")
@@ -32,8 +33,12 @@ public class CustomerAuthenticator extends HttpServlet {
 			out = response.getWriter();
 			
 			if (new CustomerEntityChecker(email, password)
-					.isAccountValid())
+					.isAccountValid()) {
 				out.print("Customer Sign In Success!");
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("user_mail", email);
+			}
 			else
 				out.print("Customer Failed Sign In");
 		
