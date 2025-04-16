@@ -14,7 +14,8 @@ public enum PagePath {
 	UPDATE_PASSWORD_SERVLET("/Kajadh/customer/update/password"),
 	HOME_PAGE("/WEB-INF/jsp/welcome.jsp"),
 	PRODUCTS_VIEW("/WEB-INF/jsp/productView/productDisplay.jsp"),
-	PRODUCTS_VIEW_REDIRECT("/Kajadh/products");
+	PRODUCTS_VIEW_REDIRECT("/Kajadh/products"),
+	BUY_NOW_REDIRECT("/Kajadh/buy-now");
 	
 	private String path;
 	

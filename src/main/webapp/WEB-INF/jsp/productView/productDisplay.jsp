@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="java.util.List, 
+					com.KajadhECommerce.Kajadh.path.PagePath,
 					com.KajadhECommerce.Kajadh.Entities.Product, 
 					com.KajadhECommerce.Kajadh.SpringContext.Contex,
 					com.KajadhECommerce.Kajadh.business.productModule.ProductOperation" %>
@@ -58,14 +59,22 @@
                         </div>
                     </div>
 
-                    <div class="p-4 flex justify-between">
-                        <button class="w-1/3 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
-                            Add to Cart
-                        </button>
-                        <button style="margin-left:15px;"class="w-1/3 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm">
-                            Buy Now
-                        </button>
-                    </div>
+                    <div class="p-4 flex justify-between space-x-4">
+    <!-- Add to Cart Button -->
+    <button class="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
+        Add to Cart
+    </button>
+
+    <!-- Buy Now Button -->
+    <form method="post" action="<%= PagePath.BUY_NOW_REDIRECT %>" class="w-1/2">
+        <input type="hidden" name="productId" value="${item.id}" />
+        <button type="submit"
+                class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm">
+            Buy Now
+        </button>
+    </form>
+</div>
+
                 </div>
             </c:forEach>
 

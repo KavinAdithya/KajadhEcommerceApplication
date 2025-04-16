@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 public class PlaceOrder extends HttpServlet{
 		
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(false);
 		
 		try {
@@ -24,10 +24,22 @@ public class PlaceOrder extends HttpServlet{
 			}
 			else {
 				response.getWriter().print("Welcome .. " + session.getAttribute("user_mail"));
+				int id = Integer.parseInt(request.getParameter("productId"));
+				
 			}
 		}
-		catch(IOException e) {
+		catch(IOException | NumberFormatException e) {
 			e.printStackTrace();
 		}
 	}	
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			response.sendRedirect(PagePath.PRODUCTS_VIEW_REDIRECT.toString());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
