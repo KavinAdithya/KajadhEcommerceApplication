@@ -15,7 +15,8 @@ public enum PagePath {
 	HOME_PAGE("/WEB-INF/jsp/welcome.jsp"),
 	PRODUCTS_VIEW("/WEB-INF/jsp/productView/productDisplay.jsp"),
 	PRODUCTS_VIEW_REDIRECT("/Kajadh/products"),
-	BUY_NOW_REDIRECT("/Kajadh/buy-now");
+	BUY_NOW_REDIRECT("/Kajadh/buy-now"),
+	BUY_NOW_CONFRIMATION_PAGE("/WEB-INF/jsp/orders/buyNow.jsp");
 	
 	private String path;
 	

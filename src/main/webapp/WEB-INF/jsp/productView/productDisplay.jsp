@@ -60,12 +60,11 @@
                     </div>
 
                     <div class="p-4 flex justify-between space-x-4">
-    <!-- Add to Cart Button -->
+                    
     <button class="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
         Add to Cart
     </button>
 
-    <!-- Buy Now Button -->
     <form method="post" action="<%= PagePath.BUY_NOW_REDIRECT %>" class="w-1/2">
         <input type="hidden" name="productId" value="${item.id}" />
         <button type="submit"

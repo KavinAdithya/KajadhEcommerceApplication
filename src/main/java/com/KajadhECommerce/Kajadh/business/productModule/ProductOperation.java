@@ -3,12 +3,15 @@ package com.KajadhECommerce.Kajadh.business.productModule;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.stereotype.Service;
+
 import com.KajadhECommerce.Kajadh.DataAccess.DeleteData;
 import com.KajadhECommerce.Kajadh.DataAccess.InsertData;
 import com.KajadhECommerce.Kajadh.DataAccess.ReadData;
 import com.KajadhECommerce.Kajadh.DataAccess.UpdateData;
 import com.KajadhECommerce.Kajadh.Entities.Product;
+import com.KajadhECommerce.Kajadh.Exception.OperationFailed;
 
 /**
  * @author KaVin
@@ -31,6 +34,37 @@ public class ProductOperation {
 	public ProductOperation() {
 		super();
 		System.out.println("Product Bean Created");
+	}
+	
+	public Product findProductById(int id) throws OperationFailed {
+		Product product = searchProduct(id);
+		if (product == null) {
+			throw new OperationFailed("Product is currently not available...");
+		}
+		
+		return product;
+	}
+	
+	private Product searchProduct(int id) {
+		int start = 0;
+		int end = products.size();
+		
+		while (start <= end) {
+			int mid = start + (end - start) / 2;
+			int curId = products.get(mid).getId();
+			
+			if (curId == id) {
+				return products.get(mid);
+			}
+			else if (curId > id) {
+				end = mid - 1;
+			}
+			else {
+				start = mid + 1;;
+			}
+		}
+		
+		return null;
 	}
 
 	/**
